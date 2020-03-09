@@ -46,7 +46,7 @@
     
     <title>
         
-            分类: 计算机网络 | 
+            课堂笔记（操作系统）（一） | 
         
         Kailand
     </title>
@@ -57,7 +57,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="personal blog">
-    <meta name="keywords" content="">
+    <meta name="keywords" content=",进程">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -218,7 +218,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Kailand">
-    <meta name="msapplication-starturl" content="http://yoursite.com/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2020/03/09/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Kailand">
@@ -233,13 +233,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+    <meta property="og:url" content="http://yoursite.com/2020/03/09/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="分类: 计算机网络 | Kailand">
+    <meta property="og:title" content="课堂笔记（操作系统）（一） | Kailand">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="personal blog">
-    
+    <meta property="og:article:tag" content="进程"> 
 
+    
+        <meta property="article:published_time" content="Mon Mar 09 2020 16:15:56 GMT+0800">
+        <meta property="article:modified_time" content="Mon Mar 09 2020 16:19:41 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -247,13 +250,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2020/03/09/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yoursite.com/2020/03/09/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/index.html",
+    "headline": "课堂笔记（操作系统）（一）",
+    "datePublished": "Mon Mar 09 2020 16:15:56 GMT+0800",
+    "dateModified": "Mon Mar 09 2020 16:19:41 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "常浩楷",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Kailand",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",进程",
+    "description": "personal blog",
+}
+</script>
 
 
     
@@ -287,220 +320,269 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#课堂笔记（操作系统）（一）"><span class="post-toc-number">1.</span> <span class="post-toc-text">课堂笔记（操作系统）（一）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#进程"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">进程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#调度器"><span class="post-toc-number">1.1.0.1.</span> <span class="post-toc-text">调度器</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#进程的特征"><span class="post-toc-number">1.1.0.2.</span> <span class="post-toc-text">进程的特征</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#进程的三种状态"><span class="post-toc-number">1.1.0.3.</span> <span class="post-toc-text">进程的三种状态</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#进程的创建与终值"><span class="post-toc-number">1.1.0.4.</span> <span class="post-toc-text">进程的创建与终值</span></a></li></ol></li></ol></li></ol></li></ol>
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2020/03/06/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/">课堂笔记（数据库）（一）</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2020/03/06/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="常浩楷's avatar">
-            </div>
-            <div>
-                <strong>常浩楷</strong>
-                <span>3月 06, 2020</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/">课堂笔记</a>, <a class="post_category-link" href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2020/03/06/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%EF%BC%88%E4%BA%8C%EF%BC%89/">课堂笔记（计网）（二）</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            应用层协议
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2020/03/06/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%EF%BC%88%E4%BA%8C%EF%BC%89/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="常浩楷's avatar">
-            </div>
-            <div>
-                <strong>常浩楷</strong>
-                <span>3月 06, 2020</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/">课堂笔记</a>, <a class="post_category-link" href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2020/03/04/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/">课堂笔记（计网）（一）</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2020/03/04/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="常浩楷's avatar">
-            </div>
-            <div>
-                <strong>常浩楷</strong>
-                <span>3月 04, 2020</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/">课堂笔记</a>, <a class="post_category-link" href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                课堂笔记（操作系统）（一）
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>常浩楷</strong>
+        <span>3月 09, 2020</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/%E8%BF%9B%E7%A8%8B/" rel="tag">进程</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=课堂笔记（操作系统）（一）&url=http://yoursite.com/2020/03/09/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=课堂笔记（操作系统）（一）&url=http://yoursite.com/2020/03/09/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/index.html&via=常浩楷" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/03/09/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2020/03/09/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
     
 </div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="课堂笔记（操作系统）（一）"><a href="#课堂笔记（操作系统）（一）" class="headerlink" title="课堂笔记（操作系统）（一）"></a>课堂笔记（操作系统）（一）</h1><h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><h4 id="调度器"><a href="#调度器" class="headerlink" title="调度器"></a>调度器</h4><p>常驻内存，不是一个进程，但是可以被执行。</p>
+<p>就绪状态的任务才能有资格被执行。</p>
+<h4 id="进程的特征"><a href="#进程的特征" class="headerlink" title="进程的特征"></a>进程的特征</h4><ol>
+<li>动态性  <em>由”创建而产生，由调度而执行，有撤消而消亡“</em></li>
+<li>并发性  _多个进程实体同存于内存之中，且能在一段时间内同时运行_。</li>
+<li>独立性  <em>进程实体是一个能独立运行</em></li>
+<li>异步性  <em>指进程按各自独立的、不可预知的速度向前推进，或说进程实体按异步方式运行</em></li>
+</ol>
+<h4 id="进程的三种状态"><a href="#进程的三种状态" class="headerlink" title="进程的三种状态"></a>进程的三种状态</h4><ol>
+<li><p>就绪状态  <em>万事俱备，只差CPU</em></p>
+</li>
+<li><p>执行状态  <em>正在执行</em></p>
+</li>
+<li><p>阻塞状态  _当前正在执行的进程由于某事件而暂时无法继续执行时，便进入暂停状态，即阻塞状态_。</p>
+<img src="/2020/03/09/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/1.png" class="" title="a pic">
+
+<blockquote>
+<p>往往根据阻塞原因，系统中会设置多个阻塞队列，当不同的阻塞原因解除时，方便调度不同的进程执行。</p>
+<p><strong>时间片到达而被抢占CPU任务从执行状态变为就绪状态</strong></p>
+<p><strong>sleep休眠，那么将从运行态变为阻塞态(等待态)</strong></p>
+<p>等待态与阻塞态为一种状态</p>
+<p><strong>如果执行状态的进程被中断，那么将会到就绪态</strong></p>
+<p>进程状态只能同时处于一种状态</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="进程的创建与终值"><a href="#进程的创建与终值" class="headerlink" title="进程的创建与终值"></a>进程的创建与终值</h4><ol>
+<li><p>创建状态 <em>资源无法得到满足</em></p>
+</li>
+<li><p>终止状态  </p>
+</li>
+<li><p>挂起状态  <em>对任何状态的进程都可以挂起</em></p>
+<blockquote>
+<p>引入挂起状态的原因：</p>
+<ol>
+<li>终端用户的请求</li>
+<li>父进程的请求</li>
+<li>负荷调节的需要，把一些不重要的进程挂起</li>
+<li>操作系统的需求</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2020/03/09/C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%A4%9A%E7%BA%BF%E7%A8%8B/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2020/03/06/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
