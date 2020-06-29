@@ -273,6 +273,231 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/29/PHP%E4%B8%8EWeb%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="常浩楷">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kailand">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/29/PHP%E4%B8%8EWeb%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="url">PHP与Web开发学习笔记（二）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-29T16:12:52+08:00">
+                2020-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP%E4%B8%8EWeb%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP与Web开发学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="字符串操作与正则表达式-一"><a href="#字符串操作与正则表达式-一" class="headerlink" title="字符串操作与正则表达式(一)"></a>字符串操作与正则表达式(一)</h2><h4 id="1-通过htmlspecialchars-过滤输出到浏览器的特殊字符"><a href="#1-通过htmlspecialchars-过滤输出到浏览器的特殊字符" class="headerlink" title="1. 通过htmlspecialchars()过滤输出到浏览器的特殊字符"></a>1. 通过<code>htmlspecialchars()</code>过滤输出到浏览器的特殊字符</h4><p>该函数将把在HTML中具有特殊含义的字符转化成为等价的HTML实体，以防止可能造成的页面布局变化与安全问题。</p>
+<p>该函数的函数原型如下</p>
+<p><code>string htmlspecialchars(string string[,int flags = ENT_COMPAT|ENT_HTML401[,string encoding=&#39;UFT-8&#39;[,bool double_encode = true]]])</code></p>
+<p>该函数具有一个必选参数以及三个可选参数。</p>
+<p>第一个必选参数即<code>string</code>，为目标字符串。第二个参数为可选参数<code>flags</code>，指定了该函数将如何进行翻译，可以使用位掩码来表示可能的组合值。其中<code>flags</code>的可选值如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th align="left">标志</th>
+<th align="left">意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>ENT_COMPAT</code></td>
+<td align="left">对双引号编码，不对单引号编码</td>
+</tr>
+<tr>
+<td align="left"><code>ENT_NOQUOTES</code></td>
+<td align="left">不对单引号和双引号编码</td>
+</tr>
+<tr>
+<td align="left"><code>ENT_QUOTES</code></td>
+<td align="left">对双引号和单引号编码</td>
+</tr>
+<tr>
+<td align="left"><code>ENT_HTML401</code></td>
+<td align="left">将代码视作HTML 4.01</td>
+</tr>
+<tr>
+<td align="left"><code>ENT_XML1</code></td>
+<td align="left">将代码当作XML 1</td>
+</tr>
+<tr>
+<td align="left"><code>ENT_XHTML</code></td>
+<td align="left">将代码视作XHTML</td>
+</tr>
+<tr>
+<td align="left"><code>ENT_HTML5</code></td>
+<td align="left">将代码视作HTML 5</td>
+</tr>
+<tr>
+<td align="left"><code>ENT_IGNORE</code></td>
+<td align="left">不返回空字符串，并且忽略无效的代码序列</td>
+</tr>
+<tr>
+<td align="left"><code>ENT_SUBTITUTE</code></td>
+<td align="left">用unicode替换字符替换无效的代码单元序列</td>
+</tr>
+<tr>
+<td align="left"><code>ENT_DISALLOWED</code></td>
+<td align="left">用unicode替换无效的代码点</td>
+</tr>
+</tbody></table>
+<p>第三个为可选参数<code>encoding</code>即编码，默认为UTF-8</p>
+<p>第四个为可选参数，制定了为是否需要对HTML实体进行编码，默认值为真。</p>
+<h4 id="2-其他输出过滤函数"><a href="#2-其他输出过滤函数" class="headerlink" title="2.其他输出过滤函数"></a>2.其他输出过滤函数</h4><h5 id="str-replace-函数"><a href="#str-replace-函数" class="headerlink" title="str_replace()函数"></a><code>str_replace()</code>函数</h5><p>其函数原型如下：<code>str_replace(find,replace,string,count)</code>，find为必须参数，为要查找的值，replace为要被替换成为的字符串，string为目标字符串，count为替换数进行计数。</p>
+<p>该函数将返回一个被替换完的字符串的拷贝，原字符串将保持不变。</p>
+<h5 id="nl2br-函数：他将会把字符串中的-n换行符换成HTML中的-lt-br-gt-的换行符。"><a href="#nl2br-函数：他将会把字符串中的-n换行符换成HTML中的-lt-br-gt-的换行符。" class="headerlink" title="nl2br()函数：他将会把字符串中的\n换行符换成HTML中的&lt;br/&gt;的换行符。"></a><code>nl2br()</code>函数：他将会把字符串中的<code>\n</code>换行符换成HTML中的<code>&lt;br/&gt;</code>的换行符。</h5><h4 id="3-格式化输出字符串"><a href="#3-格式化输出字符串" class="headerlink" title="3.格式化输出字符串"></a>3.格式化输出字符串</h4><p>###<code>printf()</code>函数与C语言中的用法相同。</p>
+<h4 id="4-字符串连接与分割"><a href="#4-字符串连接与分割" class="headerlink" title="4. 字符串连接与分割"></a>4. 字符串连接与分割</h4><h5 id="explode-函数"><a href="#explode-函数" class="headerlink" title="explode()函数"></a><code>explode()</code>函数</h5><p>原型如下：</p>
+<p><code>array explode(string separator, string input[,int limit])</code></p>
+<p>其中separator作为分隔符，input作为输入，limit为可选参数，作为块数分割的上限。</p>
+<blockquote>
+<p>用<code>each()</code>循环数组的方法</p>
+<p>示例代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $str = <span class="string">"1371635573@qq.com"</span>;</span><br><span class="line">  $res = explode(<span class="string">'@'</span>,$str);</span><br><span class="line">  reset($res);</span><br><span class="line">  <span class="keyword">while</span>($el = each($res))&#123;</span><br><span class="line">    <span class="keyword">echo</span> nl2br($el[<span class="number">0</span>].<span class="string">". "</span>.$el[<span class="number">1</span>].<span class="string">"&lt;br&gt;"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>运行后产生的结果如下：</p>
+<ol start="0">
+<li><p>1371635573</p>
+</li>
+<li><p>qq.com</p>
+</li>
+</ol>
+<p>每次遍历产生的<code>$el</code>变量也为一个数组,长度为2，第一个保存着该项的索引，第二个保存着该项的值，可以用数组方法即0，1下表索引也可用 ‘key’ 和’value’用于访问。</p>
+</blockquote>
+<h5 id="implode与join函数"><a href="#implode与join函数" class="headerlink" title="implode与join函数"></a><code>implode</code>与<code>join</code>函数</h5><p>改两函数作用相同，均为将数组连接成为一个字符串。</p>
+<h5 id="strtok函数"><a href="#strtok函数" class="headerlink" title="strtok函数"></a><code>strtok</code>函数</h5><p>与<code>explode</code>用法类似将字符串分割，但是与<code>explode</code>不同，该函数将分割出单个字符串只返回一个字符串。</p>
+<p>但是该函数的调用方法并不只有表面上的简单，当调用该函数时，其内部将会保存字符串的指针。在接下来的调用过程中，就只需传递分隔符即可，要充值该指针，用其它字符串传入该函数即可。</p>
+<p>示例代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $str = <span class="string">"aaa  bbb  ccc  ddd"</span>;</span><br><span class="line">  $token = strtok($str,<span class="string">"  "</span>);</span><br><span class="line">  <span class="keyword">while</span>($token!=<span class="string">""</span>)&#123;</span><br><span class="line">    <span class="keyword">echo</span> $token.<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">    $token = strtok(<span class="string">"  "</span>);</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">aaa</span><br><span class="line">bbb</span><br><span class="line">ccc</span><br><span class="line">ddd</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/21/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%B8%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1996,7 +2221,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
