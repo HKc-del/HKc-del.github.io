@@ -94,15 +94,15 @@
 
 
 
-<meta name="description" content="JavaScript中的内存垃圾回收​    JavaScript是一种具有自动垃圾回收机制的语言，执行环境会负责代码执行过程中的使用的内存。垃圾回收器会按照固定的时间间隔周期性的执行这一操作：找出不再被使用的变量，然后释放其占用的内存。 标记清除​    JavaScript最常使用的垃圾收集机制是标记清除，当变量进入环境中时，就将这个变量标记为进入环境，被标记为进入环境的变量将用不会被释放，当">
+<meta name="description" content="引用类型(一)​    引用类型时一种数据结构，将一些数据和功能集合在一起，也常被称作类。但在ECMAScript中将其称为类并不妥当，他不具备传统面向对象语言所支持的类和接口等基本操作。 Object类型常见的定义Object型变量的方法如下。  调用构造函数 12var person &#x3D; new Object();person.name &#x3D; &#39;Kailand&#39;;  字面量定义 123var p">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript读书笔记-二">
-<meta property="og:url" content="http://yoursite.com/2020/07/06/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%BA%8C/index.html">
+<meta property="og:title" content="JavaScript读书笔记-三">
+<meta property="og:url" content="http://yoursite.com/2020/07/06/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%B8%89/index.html">
 <meta property="og:site_name" content="Kailand">
-<meta property="og:description" content="JavaScript中的内存垃圾回收​    JavaScript是一种具有自动垃圾回收机制的语言，执行环境会负责代码执行过程中的使用的内存。垃圾回收器会按照固定的时间间隔周期性的执行这一操作：找出不再被使用的变量，然后释放其占用的内存。 标记清除​    JavaScript最常使用的垃圾收集机制是标记清除，当变量进入环境中时，就将这个变量标记为进入环境，被标记为进入环境的变量将用不会被释放，当">
+<meta property="og:description" content="引用类型(一)​    引用类型时一种数据结构，将一些数据和功能集合在一起，也常被称作类。但在ECMAScript中将其称为类并不妥当，他不具备传统面向对象语言所支持的类和接口等基本操作。 Object类型常见的定义Object型变量的方法如下。  调用构造函数 12var person &#x3D; new Object();person.name &#x3D; &#39;Kailand&#39;;  字面量定义 123var p">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-06T02:18:13.000Z">
-<meta property="article:modified_time" content="2020-07-06T02:48:09.606Z">
+<meta property="article:published_time" content="2020-07-06T02:54:27.000Z">
+<meta property="article:modified_time" content="2020-07-06T07:59:26.604Z">
 <meta property="article:author" content="常浩楷">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/07/06/JavaScript读书笔记-二/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/07/06/JavaScript读书笔记-三/"/>
 
 
 
 
 
-  <title>JavaScript读书笔记-二 | Kailand</title>
+  <title>JavaScript读书笔记-三 | Kailand</title>
   
 
 
@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/06/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%BA%8C/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/06/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%B8%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="常浩楷">
@@ -290,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript读书笔记-二</h1>
+          <h1 class="post-title" itemprop="name headline">JavaScript读书笔记-三</h1>
         
 
         <div class="post-meta">
@@ -302,7 +302,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-06T10:18:13+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-06T10:54:27+08:00">
                 2020-07-06
               </time>
             
@@ -362,11 +362,53 @@
       
 
       
-        <h1 id="JavaScript中的内存"><a href="#JavaScript中的内存" class="headerlink" title="JavaScript中的内存"></a>JavaScript中的内存</h1><h2 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><p>​    JavaScript是一种具有自动垃圾回收机制的语言，执行环境会负责代码执行过程中的使用的内存。垃圾回收器会按照固定的时间间隔周期性的执行这一操作：找出不再被使用的变量，然后释放其占用的内存。</p>
-<h3 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h3><p>​    JavaScript最常使用的垃圾收集机制是标记清除，当变量进入环境中时，就将这个变量标记为进入环境，被标记为进入环境的变量将用不会被释放，当变量离开环境时，将其标记为离开环境。垃圾回收器在运行时，会首先为所有的储存在内存中的变量都加上标记，然后会去除环境中的变量以及被环境中的变量引用的变量的标记，将被添加上标记的变量视为可以删除的变量，然后垃圾回收器将完成内存的清理工作。到2008年，大部分的浏览器采用的策略均为标记清除式的垃圾回收策略。</p>
-<h3 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h3><p>​    引用技术将跟踪记录每个变量被引用的次数，当引用次数变为0时，该变量将被释放。但是遭遇了严重的问题，例如：循环引用问题，两个变量互相引用，两变量将永远不会被释放。为了避免该情况的发生，最好的方法是在不再使用变量时，手动断开变量的引用。</p>
-<h3 id="性能问题"><a href="#性能问题" class="headerlink" title="性能问题"></a>性能问题</h3><p>​    由于垃圾回收器是定期运行的，当使用的内存很大时，回收的工作量也将巨大。早期的IE6浏览器中，由于使用了不良好的垃圾回收机制，导致性能极差，在IE6中，当内存使用量一但到达了某个阈值，将触发垃圾回收机制，但是在某些程序中，这些内存将贯穿整个生命周期，所以就会频繁的触发垃圾回收机制，导致性能大幅度下降，在IE7中引入了阈值可变的垃圾回收机制，大大的解决的上述问题。</p>
-<h3 id="管理内存"><a href="#管理内存" class="headerlink" title="管理内存"></a>管理内存</h3><p>​    为了在编写程序时让页面获得更好的性能，最好的解决方案就是只保留程序执行所必须的数据，而其它数据一旦使用完毕，则立刻赋值为null来释放引用。这一做法适用于全局变量与全局对象。其他局部变量将在离开执行环境时自动解除引用。</p>
+        <h1 id="引用类型-一"><a href="#引用类型-一" class="headerlink" title="引用类型(一)"></a>引用类型(一)</h1><p>​    引用类型时一种数据结构，将一些数据和功能集合在一起，也常被称作类。但在ECMAScript中将其称为类并不妥当，他不具备传统面向对象语言所支持的类和接口等基本操作。</p>
+<h2 id="Object类型"><a href="#Object类型" class="headerlink" title="Object类型"></a>Object类型</h2><p>常见的定义Object型变量的方法如下。</p>
+<ol>
+<li><p>调用构造函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">person.name = <span class="string">'Kailand'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字面量定义</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">	name:<span class="string">'Kailand'</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="Array类型"><a href="#Array类型" class="headerlink" title="Array类型"></a>Array类型</h2><p><strong>Array上存在可以读取其长度的length属性，但是请注意这并不是一个只读属性，而是可以用作修改的属性，可以灵活的用于为删除数组结尾的引用变量。</strong>例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = [<span class="string">'red'</span>,<span class="string">'blue'</span>,<span class="string">'green'</span>];</span><br><span class="line">colors[colors.length] = <span class="string">'black'</span>;</span><br><span class="line">colors[colors.length] = <span class="string">'brown'</span>;<span class="comment">//可以为结尾添加索引</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="RegExp类型"><a href="#RegExp类型" class="headerlink" title="RegExp类型"></a>RegExp类型</h2><p>ECMAScript通过RegExp类型来支持正则表达式。定义语句如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> expression = <span class="regexp">/ pattern /</span> flags;</span><br></pre></td></tr></table></figure>
+
+<p>其中pattern表示了一个可以匹配的模式，可以是任意的正则表达式，flags表示的行为，支持以下三个行为。</p>
+<ul>
+<li><code>g</code>表示全局模式，即模式将被应用于整个字符串，而非只应用于第一个匹配项处。</li>
+<li><code>i</code>表示将不区分大小写</li>
+<li><code>m</code>表示多行，即达到行尾时将会继续下一行中的查找。</li>
+</ul>
+<p>与其它语言相同，在使用特殊字符时仍需要<code>\</code>进行转义。在另一种使用<code>RegExp</code>的构造函数时，将会使用到双重转义，即如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//利用表达式，创建RegExp对象</span></span><br><span class="line"><span class="keyword">var</span> pattern1 = <span class="regexp">/[bc]at/i</span>;</span><br><span class="line"><span class="comment">//利用RegExp构造函数</span></span><br><span class="line"><span class="keyword">var</span> pattern2 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"[bc]at"</span>,<span class="string">"i"</span>);</span><br><span class="line"><span class="comment">//当遭遇需要转移的字符时，例如需要匹配[br]at时，利用表达式</span></span><br><span class="line"><span class="keyword">var</span> pattern3 = <span class="regexp">/\[bc\]at/i</span>;</span><br><span class="line"><span class="comment">//此时利用构造函数就需要使用到双重转义，如下</span></span><br><span class="line"><span class="keyword">var</span> patter4 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"\\[bc\\]at"</span>,<span class="string">"i"</span>);</span><br><span class="line"><span class="comment">//当需要匹配'\'时则需要使用连续的4个'\'，进行转移</span></span><br><span class="line"><span class="keyword">var</span> pattern5 = <span class="regexp">/\\hello\\/</span> <span class="comment">//匹配\hello\</span></span><br><span class="line"><span class="comment">//使用构造函数</span></span><br><span class="line"><span class="keyword">var</span> pattern6 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"\\\\hello\\\\"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="RegExp的实例属性"><a href="#RegExp的实例属性" class="headerlink" title="RegExp的实例属性"></a>RegExp的实例属性</h3><p>RegExp每个实例都有以下属性：</p>
+<ul>
+<li>global 布尔值，表示是否设置了g标志</li>
+<li>ignoreCase boolean 表示是否设置了i标识</li>
+<li>lastIndex 表示开始搜索下一个匹配项的字符位置</li>
+<li>multiline 是否设置了m标志</li>
+<li>source 正则表达式的字符串表示</li>
+</ul>
+<h3 id="RegExp的实例方法"><a href="#RegExp的实例方法" class="headerlink" title="RegExp的实例方法"></a>RegExp的实例方法</h3><p>主要方法为<code>exec()</code>，该方法是为了捕获组(即：子匹配)而设计的，<code>exec()</code>只接受一个参数，即要应用模式的字符串，然后返回一个匹配项的数组，如果没有匹配将返回<code>null</code>，若匹配成功将返回，一个<code>Array</code>对象和两个额外的属性，即<code>index</code>与<code>input</code>分别表示第一处匹配的下标处和输入的字符串。而<code>Array</code>对象中将存放着捕获组的字符串。</p>
+<p><strong>全局模式与非全局模式的区别</strong></p>
+<p>若使用全局模式在执行<code>exce()</code>方法时，将不断地移动lastIndex，以向字符串后部移动，若不启用全局模式，将不会移动字符串的指针，始终只返回第一处匹配的模式。</p>
+<p>第二个方法为<code>test()</code>方法，他将接受一个字符串参数，若存在匹配将返回true，若不存在匹配，则返回false，这个语句常被用于if语句之中。</p>
+<h3 id="RegExp的构造函数属性"><a href="#RegExp的构造函数属性" class="headerlink" title="RegExp的构造函数属性"></a>RegExp的构造函数属性</h3><p>构造函数属性在其他语言中被视为静态属性，他将返回作用域所有RegExp实例的一些特性。主要有以下属性：</p>
+<ul>
+<li><code>input</code>:短属性<code>$_</code>标识最近一次要匹配的字符串</li>
+<li><code>lastMatch</code>:短属性<code>$&amp;</code>最近一次的匹配项</li>
+<li><code>lastParen</code>:短属性<code>$+</code>最近一次的匹配组</li>
+<li><code>leftContext</code>:短属性 $` 返回input中lastMatch之前的文本</li>
+<li><code>multilin</code>:短属性<code>$*</code>表示是否所有表达式都使用了多行模式</li>
+<li><code>rightContext</code>:短属性<code>$&#39;</code>返回input中lastMatch后的文本</li>
+</ul>
 
       
     </div>
@@ -397,8 +439,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/06/29/PHP%E4%B8%8EWeb%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/" rel="next" title="PHP与Web开发学习笔记（三）">
-                <i class="fa fa-chevron-left"></i> PHP与Web开发学习笔记（三）
+              <a href="/2020/07/06/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%BA%8C/" rel="next" title="JavaScript读书笔记-二">
+                <i class="fa fa-chevron-left"></i> JavaScript读书笔记-二
               </a>
             
           </div>
@@ -406,10 +448,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/07/06/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%B8%89/" rel="prev" title="JavaScript读书笔记-三">
-                JavaScript读书笔记-三 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -543,7 +581,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript中的内存"><span class="nav-number">1.</span> <span class="nav-text">JavaScript中的内存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾回收"><span class="nav-number">1.1.</span> <span class="nav-text">垃圾回收</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标记清除"><span class="nav-number">1.1.1.</span> <span class="nav-text">标记清除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用计数"><span class="nav-number">1.1.2.</span> <span class="nav-text">引用计数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能问题"><span class="nav-number">1.1.3.</span> <span class="nav-text">性能问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管理内存"><span class="nav-number">1.1.4.</span> <span class="nav-text">管理内存</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引用类型-一"><span class="nav-number">1.</span> <span class="nav-text">引用类型(一)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Object类型"><span class="nav-number">1.1.</span> <span class="nav-text">Object类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array类型"><span class="nav-number">1.2.</span> <span class="nav-text">Array类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RegExp类型"><span class="nav-number">1.3.</span> <span class="nav-text">RegExp类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RegExp的实例属性"><span class="nav-number">1.3.1.</span> <span class="nav-text">RegExp的实例属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RegExp的实例方法"><span class="nav-number">1.3.2.</span> <span class="nav-text">RegExp的实例方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RegExp的构造函数属性"><span class="nav-number">1.3.3.</span> <span class="nav-text">RegExp的构造函数属性</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

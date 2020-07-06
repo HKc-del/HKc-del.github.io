@@ -273,6 +273,194 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/06/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%B8%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="常浩楷">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kailand">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/06/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%B8%89/" itemprop="url">JavaScript读书笔记-三</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-06T10:54:27+08:00">
+                2020-07-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="引用类型-一"><a href="#引用类型-一" class="headerlink" title="引用类型(一)"></a>引用类型(一)</h1><p>​    引用类型时一种数据结构，将一些数据和功能集合在一起，也常被称作类。但在ECMAScript中将其称为类并不妥当，他不具备传统面向对象语言所支持的类和接口等基本操作。</p>
+<h2 id="Object类型"><a href="#Object类型" class="headerlink" title="Object类型"></a>Object类型</h2><p>常见的定义Object型变量的方法如下。</p>
+<ol>
+<li><p>调用构造函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">person.name = <span class="string">'Kailand'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字面量定义</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">	name:<span class="string">'Kailand'</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="Array类型"><a href="#Array类型" class="headerlink" title="Array类型"></a>Array类型</h2><p><strong>Array上存在可以读取其长度的length属性，但是请注意这并不是一个只读属性，而是可以用作修改的属性，可以灵活的用于为删除数组结尾的引用变量。</strong>例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = [<span class="string">'red'</span>,<span class="string">'blue'</span>,<span class="string">'green'</span>];</span><br><span class="line">colors[colors.length] = <span class="string">'black'</span>;</span><br><span class="line">colors[colors.length] = <span class="string">'brown'</span>;<span class="comment">//可以为结尾添加索引</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="RegExp类型"><a href="#RegExp类型" class="headerlink" title="RegExp类型"></a>RegExp类型</h2><p>ECMAScript通过RegExp类型来支持正则表达式。定义语句如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> expression = <span class="regexp">/ pattern /</span> flags;</span><br></pre></td></tr></table></figure>
+
+<p>其中pattern表示了一个可以匹配的模式，可以是任意的正则表达式，flags表示的行为，支持以下三个行为。</p>
+<ul>
+<li><code>g</code>表示全局模式，即模式将被应用于整个字符串，而非只应用于第一个匹配项处。</li>
+<li><code>i</code>表示将不区分大小写</li>
+<li><code>m</code>表示多行，即达到行尾时将会继续下一行中的查找。</li>
+</ul>
+<p>与其它语言相同，在使用特殊字符时仍需要<code>\</code>进行转义。在另一种使用<code>RegExp</code>的构造函数时，将会使用到双重转义，即如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//利用表达式，创建RegExp对象</span></span><br><span class="line"><span class="keyword">var</span> pattern1 = <span class="regexp">/[bc]at/i</span>;</span><br><span class="line"><span class="comment">//利用RegExp构造函数</span></span><br><span class="line"><span class="keyword">var</span> pattern2 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"[bc]at"</span>,<span class="string">"i"</span>);</span><br><span class="line"><span class="comment">//当遭遇需要转移的字符时，例如需要匹配[br]at时，利用表达式</span></span><br><span class="line"><span class="keyword">var</span> pattern3 = <span class="regexp">/\[bc\]at/i</span>;</span><br><span class="line"><span class="comment">//此时利用构造函数就需要使用到双重转义，如下</span></span><br><span class="line"><span class="keyword">var</span> patter4 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"\\[bc\\]at"</span>,<span class="string">"i"</span>);</span><br><span class="line"><span class="comment">//当需要匹配'\'时则需要使用连续的4个'\'，进行转移</span></span><br><span class="line"><span class="keyword">var</span> pattern5 = <span class="regexp">/\\hello\\/</span> <span class="comment">//匹配\hello\</span></span><br><span class="line"><span class="comment">//使用构造函数</span></span><br><span class="line"><span class="keyword">var</span> pattern6 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"\\\\hello\\\\"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="RegExp的实例属性"><a href="#RegExp的实例属性" class="headerlink" title="RegExp的实例属性"></a>RegExp的实例属性</h3><p>RegExp每个实例都有以下属性：</p>
+<ul>
+<li>global 布尔值，表示是否设置了g标志</li>
+<li>ignoreCase boolean 表示是否设置了i标识</li>
+<li>lastIndex 表示开始搜索下一个匹配项的字符位置</li>
+<li>multiline 是否设置了m标志</li>
+<li>source 正则表达式的字符串表示</li>
+</ul>
+<h3 id="RegExp的实例方法"><a href="#RegExp的实例方法" class="headerlink" title="RegExp的实例方法"></a>RegExp的实例方法</h3><p>主要方法为<code>exec()</code>，该方法是为了捕获组(即：子匹配)而设计的，<code>exec()</code>只接受一个参数，即要应用模式的字符串，然后返回一个匹配项的数组，如果没有匹配将返回<code>null</code>，若匹配成功将返回，一个<code>Array</code>对象和两个额外的属性，即<code>index</code>与<code>input</code>分别表示第一处匹配的下标处和输入的字符串。而<code>Array</code>对象中将存放着捕获组的字符串。</p>
+<p><strong>全局模式与非全局模式的区别</strong></p>
+<p>若使用全局模式在执行<code>exce()</code>方法时，将不断地移动lastIndex，以向字符串后部移动，若不启用全局模式，将不会移动字符串的指针，始终只返回第一处匹配的模式。</p>
+<p>第二个方法为<code>test()</code>方法，他将接受一个字符串参数，若存在匹配将返回true，若不存在匹配，则返回false，这个语句常被用于if语句之中。</p>
+<h3 id="RegExp的构造函数属性"><a href="#RegExp的构造函数属性" class="headerlink" title="RegExp的构造函数属性"></a>RegExp的构造函数属性</h3><p>构造函数属性在其他语言中被视为静态属性，他将返回作用域所有RegExp实例的一些特性。主要有以下属性：</p>
+<ul>
+<li><code>input</code>:短属性<code>$_</code>标识最近一次要匹配的字符串</li>
+<li><code>lastMatch</code>:短属性<code>$&amp;</code>最近一次的匹配项</li>
+<li><code>lastParen</code>:短属性<code>$+</code>最近一次的匹配组</li>
+<li><code>leftContext</code>:短属性 $` 返回input中lastMatch之前的文本</li>
+<li><code>multilin</code>:短属性<code>$*</code>表示是否所有表达式都使用了多行模式</li>
+<li><code>rightContext</code>:短属性<code>$&#39;</code>返回input中lastMatch后的文本</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/06/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%BA%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2024,182 +2212,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/06/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%EF%BC%88%E4%BA%8C%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="常浩楷">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kailand">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/06/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="url">课堂笔记（计网）（二）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-06T22:02:33+08:00">
-                2020-03-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">课堂笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机网络</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="应用层协议"><a href="#应用层协议" class="headerlink" title="应用层协议"></a>应用层协议</h3><ol>
-<li><p>公共领域协议</p>
-<blockquote>
-<p>由RFC文档确定</p>
-<p>可供大家使用</p>
-<p>如：HTTP,SMTP</p>
-</blockquote>
-</li>
-<li><p>TCP协议</p>
-<blockquote>
-<p>面向连接(客户机程序和服务器程序之间必须建立连接)</p>
-<p>可靠的传输服务</p>
-<p>流量控制</p>
-<p>拥塞控制</p>
-<p><strong>没有提供</strong>:时延保证、最小带宽</p>
-</blockquote>
-</li>
-<li><p>UDP协议</p>
-<blockquote>
-<p>不可靠的数据传输</p>
-<p><strong>没有提供</strong>:建立连接，可靠性，流量控制，拥塞控制，时延和带宽保证</p>
-</blockquote>
-</li>
-</ol>
-<h3 id="Web和HTTP"><a href="#Web和HTTP" class="headerlink" title="Web和HTTP"></a>Web和HTTP</h3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2250,7 +2262,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
