@@ -273,6 +273,152 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/06/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%BA%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="常浩楷">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kailand">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/06/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%BA%8C/" itemprop="url">JavaScript读书笔记-二</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-06T10:18:13+08:00">
+                2020-07-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JavaScript中的内存"><a href="#JavaScript中的内存" class="headerlink" title="JavaScript中的内存"></a>JavaScript中的内存</h1><h2 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><p>​    JavaScript是一种具有自动垃圾回收机制的语言，执行环境会负责代码执行过程中的使用的内存。垃圾回收器会按照固定的时间间隔周期性的执行这一操作：找出不再被使用的变量，然后释放其占用的内存。</p>
+<h3 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h3><p>​    JavaScript最常使用的垃圾收集机制是标记清除，当变量进入环境中时，就将这个变量标记为进入环境，被标记为进入环境的变量将用不会被释放，当变量离开环境时，将其标记为离开环境。垃圾回收器在运行时，会首先为所有的储存在内存中的变量都加上标记，然后会去除环境中的变量以及被环境中的变量引用的变量的标记，将被添加上标记的变量视为可以删除的变量，然后垃圾回收器将完成内存的清理工作。到2008年，大部分的浏览器采用的策略均为标记清除式的垃圾回收策略。</p>
+<h3 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h3><p>​    引用技术将跟踪记录每个变量被引用的次数，当引用次数变为0时，该变量将被释放。但是遭遇了严重的问题，例如：循环引用问题，两个变量互相引用，两变量将永远不会被释放。为了避免该情况的发生，最好的方法是在不再使用变量时，手动断开变量的引用。</p>
+<h3 id="性能问题"><a href="#性能问题" class="headerlink" title="性能问题"></a>性能问题</h3><p>​    由于垃圾回收器是定期运行的，当使用的内存很大时，回收的工作量也将巨大。早期的IE6浏览器中，由于使用了不良好的垃圾回收机制，导致性能极差，在IE6中，当内存使用量一但到达了某个阈值，将触发垃圾回收机制，但是在某些程序中，这些内存将贯穿整个生命周期，所以就会频繁的触发垃圾回收机制，导致性能大幅度下降，在IE7中引入了阈值可变的垃圾回收机制，大大的解决的上述问题。</p>
+<h3 id="管理内存"><a href="#管理内存" class="headerlink" title="管理内存"></a>管理内存</h3><p>​    为了在编写程序时让页面获得更好的性能，最好的解决方案就是只保留程序执行所必须的数据，而其它数据一旦使用完毕，则立刻赋值为null来释放引用。这一做法适用于全局变量与全局对象。其他局部变量将在离开执行环境时自动解除引用。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/29/PHP%E4%B8%8EWeb%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2054,230 +2200,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="常浩楷">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kailand">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/04/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/" itemprop="url">课堂笔记（计网）（一）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-04T16:09:08+08:00">
-                2020-03-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">课堂笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机网络</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="课堂笔记（计网）（一）"><a href="#课堂笔记（计网）（一）" class="headerlink" title="课堂笔记（计网）（一）"></a>课堂笔记（计网）（一）</h1><h3 id="分组交换网络中的延迟"><a href="#分组交换网络中的延迟" class="headerlink" title="分组交换网络中的延迟"></a>分组交换网络中的延迟</h3><img src="/2020/03/04/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/1.png" class="" title="a pic">
-
-<ol>
-<li><p><strong>dproc</strong>  = 节点处理时延－nodal processing delay</p>
-<p>典型几个微秒或更小</p>
-</li>
-<li><p><strong>dqueue</strong> = 排队时延－queuing delay</p>
-<p>取决于路由器的拥塞程度</p>
-</li>
-<li><p><strong>dtrans</strong> = 传输时延－transmission delay</p>
-<p>= L/R, 低带宽链路比较显著</p>
-</li>
-<li><p><strong>dprop</strong> = 传播时延－propagation delay</p>
-<p>几个微妙到数百毫秒（卫星通信高传播延迟）</p>
-</li>
-</ol>
-<h3 id="吞吐量"><a href="#吞吐量" class="headerlink" title="吞吐量"></a>吞吐量</h3><p>单位时间内整个网络传输数据的速率或分组数。</p>
-<ol>
-<li><p>瞬时吞吐量(某一瞬间)</p>
-</li>
-<li><p>平均吞吐量(一段时间内)</p>
-</li>
-</ol>
-<h3 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h3><p>​    p49 20、21题</p>
-<h3 id="协议层次及其服务模型"><a href="#协议层次及其服务模型" class="headerlink" title="协议层次及其服务模型"></a>协议层次及其服务模型</h3><h5 id="分层的弊端"><a href="#分层的弊端" class="headerlink" title="分层的弊端"></a>分层的弊端</h5><blockquote>
-<p>执行效率低     </p>
-</blockquote>
-<h5 id="TCP-IP参考模型"><a href="#TCP-IP参考模型" class="headerlink" title="TCP/IP参考模型"></a>TCP/IP参考模型</h5><blockquote>
-<table>
-<thead>
-<tr>
-<th align="center">TCP/IP参考模型</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">应用层</td>
-</tr>
-<tr>
-<td align="center">传输层</td>
-</tr>
-<tr>
-<td align="center">网络层</td>
-</tr>
-<tr>
-<td align="center">数据链路层</td>
-</tr>
-<tr>
-<td align="center">物理层</td>
-</tr>
-</tbody></table>
-</blockquote>
-<h5 id="协议分层与数据"><a href="#协议分层与数据" class="headerlink" title="协议分层与数据"></a>协议分层与数据</h5><blockquote>
-<p>各层发方从上层到下层，收方从下层到上层传递数据</p>
-<blockquote>
-<p>发方添加头部信息创建新的数据单元，收方去掉头部</p>
-<p>传递新的数据单元到下层/上层</p>
-<p>各层传送不同的协议数据单元PDU</p>
-</blockquote>
-</blockquote>
-<h2 id="课外作业"><a href="#课外作业" class="headerlink" title="课外作业"></a>课外作业</h2><blockquote>
-<p>wireshark软件的使用入门</p>
-<p>课后习题 复习题11，18，19 习题 5、6、7、10、11、31、33</p>
-</blockquote>
-<h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><blockquote>
-<p>核心网络部分没有只有3层，传输层与应用层只在端系统上实现。</p>
-</blockquote>
-<h3 id="网络应用程序体系结构"><a href="#网络应用程序体系结构" class="headerlink" title="网络应用程序体系结构"></a>网络应用程序体系结构</h3><blockquote>
-<p>C/S体系结构</p>
-<p>P2P体系结构</p>
-<p>C/S和P2P混合的体系结构</p>
-</blockquote>
-<h3 id="进程通讯"><a href="#进程通讯" class="headerlink" title="进程通讯"></a>进程通讯</h3><p>​    套接字<code>socket</code>是进程与计算机网络的接口</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2328,7 +2250,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="进程," />
+  <meta name="keywords" content="JavaScript," />
 
 
 
@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="课堂笔记（操作系统）（二）进程管理中的数据结构进程控制块作用：  独立运行基本单位的标志 能实现间断性运行方式 提供进程管理所需要的信息 提供进程调度所需要的信息 实现与其它进程的同步与通信  内容：  进程标识符信息   进程标识符用于惟一地标识一个进程。一个进程通常有两种标识符  内部标识符  为每一个进程赋予一个惟一的数字标识符 外部标识符  它由创建者提供(进程的名字)，通常是由字母、数字">
+<meta name="description" content="JavaScript中的内存垃圾回收​    JavaScript是一种具有自动垃圾回收机制的语言，执行环境会负责代码执行过程中的使用的内存。垃圾回收器会按照固定的时间间隔周期性的执行这一操作：找出不再被使用的变量，然后释放其占用的内存。 标记清除​    JavaScript最常使用的垃圾收集机制是标记清除，当变量进入环境中时，就将这个变量标记为进入环境，被标记为进入环境的变量将用不会被释放，当">
 <meta property="og:type" content="article">
-<meta property="og:title" content="课堂笔记（操作系统）（二）">
-<meta property="og:url" content="http://yoursite.com/2020/03/11/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
+<meta property="og:title" content="JavaScript读书笔记-二">
+<meta property="og:url" content="http://yoursite.com/2020/07/06/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%BA%8C/index.html">
 <meta property="og:site_name" content="Kailand">
-<meta property="og:description" content="课堂笔记（操作系统）（二）进程管理中的数据结构进程控制块作用：  独立运行基本单位的标志 能实现间断性运行方式 提供进程管理所需要的信息 提供进程调度所需要的信息 实现与其它进程的同步与通信  内容：  进程标识符信息   进程标识符用于惟一地标识一个进程。一个进程通常有两种标识符  内部标识符  为每一个进程赋予一个惟一的数字标识符 外部标识符  它由创建者提供(进程的名字)，通常是由字母、数字">
+<meta property="og:description" content="JavaScript中的内存垃圾回收​    JavaScript是一种具有自动垃圾回收机制的语言，执行环境会负责代码执行过程中的使用的内存。垃圾回收器会按照固定的时间间隔周期性的执行这一操作：找出不再被使用的变量，然后释放其占用的内存。 标记清除​    JavaScript最常使用的垃圾收集机制是标记清除，当变量进入环境中时，就将这个变量标记为进入环境，被标记为进入环境的变量将用不会被释放，当">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-11T02:07:46.000Z">
-<meta property="article:modified_time" content="2020-03-11T02:09:12.089Z">
+<meta property="article:published_time" content="2020-07-06T02:18:13.000Z">
+<meta property="article:modified_time" content="2020-07-06T02:48:09.606Z">
 <meta property="article:author" content="常浩楷">
-<meta property="article:tag" content="进程">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/03/11/课堂笔记（操作系统）（二）/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/07/06/JavaScript读书笔记-二/"/>
 
 
 
 
 
-  <title>课堂笔记（操作系统）（二） | Kailand</title>
+  <title>JavaScript读书笔记-二 | Kailand</title>
   
 
 
@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/11/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89%EF%BC%88%E4%BA%8C%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/06/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%BA%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="常浩楷">
@@ -290,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">课堂笔记（操作系统）（二）</h1>
+          <h1 class="post-title" itemprop="name headline">JavaScript读书笔记-二</h1>
         
 
         <div class="post-meta">
@@ -302,8 +302,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-11T10:07:46+08:00">
-                2020-03-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-06T10:18:13+08:00">
+                2020-07-06
               </time>
             
 
@@ -325,19 +325,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">课堂笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
-                    <span itemprop="name">操作系统</span>
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
                   </a>
                 </span>
 
@@ -373,53 +362,11 @@
       
 
       
-        <h1 id="课堂笔记（操作系统）（二）"><a href="#课堂笔记（操作系统）（二）" class="headerlink" title="课堂笔记（操作系统）（二）"></a>课堂笔记（操作系统）（二）</h1><h3 id="进程管理中的数据结构"><a href="#进程管理中的数据结构" class="headerlink" title="进程管理中的数据结构"></a>进程管理中的数据结构</h3><h4 id="进程控制块"><a href="#进程控制块" class="headerlink" title="进程控制块"></a>进程控制块</h4><p><strong>作用</strong>：</p>
-<ol>
-<li>独立运行基本单位的标志</li>
-<li>能实现间断性运行方式</li>
-<li>提供进程管理所需要的信息</li>
-<li>提供进程调度所需要的信息</li>
-<li>实现与其它进程的同步与通信</li>
-</ol>
-<p><strong>内容</strong>：</p>
-<ol>
-<li><p>进程标识符信息</p>
-<blockquote>
-<p> <strong>进程标识符用于惟一地标识一个进程。一个进程通常有两种标识符</strong></p>
-<ol>
-<li>内部标识符  <em>为每一个进程赋予一个惟一的数字标识符</em></li>
-<li>外部标识符  <em>它由创建者提供(进程的名字)，通常是由字母、数字组成，往往是由用户（进程）在访问该进程时使用</em></li>
-</ol>
-</blockquote>
-</li>
-<li><p>处理器状态信息</p>
-<blockquote>
-<p><strong>处理机状态信息主要是由处理机的各种寄存器中的内容组成的</strong></p>
-</blockquote>
-</li>
-<li><p>进程调度信息</p>
-<blockquote>
-<ol>
-<li>进程状态。指明进程的当前状态</li>
-<li>进程优先级</li>
-<li>进程调度所需的其它信息  <em>进程已等待CPU的时间总和、进程已执行的时间总和等</em></li>
-<li>事件 <em>即 阻塞原因</em>     通过PCB中存储的该进程的阻塞事件，找到该进程所在的阻塞队列</li>
-</ol>
-</blockquote>
-</li>
-<li><p>进程控制信息</p>
-<blockquote>
-<ol>
-<li>程序和数据的地址</li>
-<li>进程同步和通信机制</li>
-<li>资源清单</li>
-<li>链接指针</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-<p>实时操作系统中没有进程的概念，调度单位是任务，相当于线程</p>
-<h3 id="作业调度的过程"><a href="#作业调度的过程" class="headerlink" title="作业调度的过程"></a>作业调度的过程</h3><p>将程序装入内存-&gt;创建进程-&gt;进入就绪队列-&gt;被调度-&gt;执行</p>
+        <h1 id="JavaScript中的内存"><a href="#JavaScript中的内存" class="headerlink" title="JavaScript中的内存"></a>JavaScript中的内存</h1><h2 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><p>​    JavaScript是一种具有自动垃圾回收机制的语言，执行环境会负责代码执行过程中的使用的内存。垃圾回收器会按照固定的时间间隔周期性的执行这一操作：找出不再被使用的变量，然后释放其占用的内存。</p>
+<h3 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h3><p>​    JavaScript最常使用的垃圾收集机制是标记清除，当变量进入环境中时，就将这个变量标记为进入环境，被标记为进入环境的变量将用不会被释放，当变量离开环境时，将其标记为离开环境。垃圾回收器在运行时，会首先为所有的储存在内存中的变量都加上标记，然后会去除环境中的变量以及被环境中的变量引用的变量的标记，将被添加上标记的变量视为可以删除的变量，然后垃圾回收器将完成内存的清理工作。到2008年，大部分的浏览器采用的策略均为标记清除式的垃圾回收策略。</p>
+<h3 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h3><p>​    引用技术将跟踪记录每个变量被引用的次数，当引用次数变为0时，该变量将被释放。但是遭遇了严重的问题，例如：循环引用问题，两个变量互相引用，两变量将永远不会被释放。为了避免该情况的发生，最好的方法是在不再使用变量时，手动断开变量的引用。</p>
+<h3 id="性能问题"><a href="#性能问题" class="headerlink" title="性能问题"></a>性能问题</h3><p>​    由于垃圾回收器是定期运行的，当使用的内存很大时，回收的工作量也将巨大。早期的IE6浏览器中，由于使用了不良好的垃圾回收机制，导致性能极差，在IE6中，当内存使用量一但到达了某个阈值，将触发垃圾回收机制，但是在某些程序中，这些内存将贯穿整个生命周期，所以就会频繁的触发垃圾回收机制，导致性能大幅度下降，在IE7中引入了阈值可变的垃圾回收机制，大大的解决的上述问题。</p>
+<h3 id="管理内存"><a href="#管理内存" class="headerlink" title="管理内存"></a>管理内存</h3><p>​    为了在编写程序时让页面获得更好的性能，最好的解决方案就是只保留程序执行所必须的数据，而其它数据一旦使用完毕，则立刻赋值为null来释放引用。这一做法适用于全局变量与全局对象。其他局部变量将在离开执行环境时自动解除引用。</p>
 
       
     </div>
@@ -437,7 +384,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E8%BF%9B%E7%A8%8B/" rel="tag"># 进程</a>
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
           
         </div>
       
@@ -450,8 +397,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/09/C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="next" title="C语言中的多线程">
-                <i class="fa fa-chevron-left"></i> C语言中的多线程
+              <a href="/2020/06/29/PHP%E4%B8%8EWeb%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/" rel="next" title="PHP与Web开发学习笔记（三）">
+                <i class="fa fa-chevron-left"></i> PHP与Web开发学习笔记（三）
               </a>
             
           </div>
@@ -459,10 +406,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/12/PHP%E4%B8%8EWeb%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" rel="prev" title="PHP与Web开发学习笔记（一）">
-                PHP与Web开发学习笔记（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -596,7 +539,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#课堂笔记（操作系统）（二）"><span class="nav-number">1.</span> <span class="nav-text">课堂笔记（操作系统）（二）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进程管理中的数据结构"><span class="nav-number">1.0.1.</span> <span class="nav-text">进程管理中的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#进程控制块"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">进程控制块</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作业调度的过程"><span class="nav-number">1.0.2.</span> <span class="nav-text">作业调度的过程</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript中的内存"><span class="nav-number">1.</span> <span class="nav-text">JavaScript中的内存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾回收"><span class="nav-number">1.1.</span> <span class="nav-text">垃圾回收</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标记清除"><span class="nav-number">1.1.1.</span> <span class="nav-text">标记清除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用计数"><span class="nav-number">1.1.2.</span> <span class="nav-text">引用计数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能问题"><span class="nav-number">1.1.3.</span> <span class="nav-text">性能问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管理内存"><span class="nav-number">1.1.4.</span> <span class="nav-text">管理内存</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
