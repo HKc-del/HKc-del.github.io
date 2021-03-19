@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/06/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%EF%BC%88%E4%BA%8C%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/06/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%B8%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="常浩楷">
@@ -292,7 +292,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/03/06/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="url">课堂笔记（计网）（二）</a></h1>
+                <a class="post-title-link" href="/2020/07/06/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%B8%89/" itemprop="url">JavaScript读书笔记-三</a></h1>
         
 
         <div class="post-meta">
@@ -304,7 +304,1746 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-06T22:02:33+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-06T10:54:27+08:00">
+                2020-07-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="引用类型-一"><a href="#引用类型-一" class="headerlink" title="引用类型(一)"></a>引用类型(一)</h1><p>​    引用类型时一种数据结构，将一些数据和功能集合在一起，也常被称作类。但在ECMAScript中将其称为类并不妥当，他不具备传统面向对象语言所支持的类和接口等基本操作。</p>
+<h2 id="Object类型"><a href="#Object类型" class="headerlink" title="Object类型"></a>Object类型</h2><p>常见的定义Object型变量的方法如下。</p>
+<ol>
+<li><p>调用构造函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">person.name = <span class="string">'Kailand'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字面量定义</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">	name:<span class="string">'Kailand'</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="Array类型"><a href="#Array类型" class="headerlink" title="Array类型"></a>Array类型</h2><p><strong>Array上存在可以读取其长度的length属性，但是请注意这并不是一个只读属性，而是可以用作修改的属性，可以灵活的用于为删除数组结尾的引用变量。</strong>例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colors = [<span class="string">'red'</span>,<span class="string">'blue'</span>,<span class="string">'green'</span>];</span><br><span class="line">colors[colors.length] = <span class="string">'black'</span>;</span><br><span class="line">colors[colors.length] = <span class="string">'brown'</span>;<span class="comment">//可以为结尾添加索引</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="RegExp类型"><a href="#RegExp类型" class="headerlink" title="RegExp类型"></a>RegExp类型</h2><p>ECMAScript通过RegExp类型来支持正则表达式。定义语句如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> expression = <span class="regexp">/ pattern /</span> flags;</span><br></pre></td></tr></table></figure>
+
+<p>其中pattern表示了一个可以匹配的模式，可以是任意的正则表达式，flags表示的行为，支持以下三个行为。</p>
+<ul>
+<li><code>g</code>表示全局模式，即模式将被应用于整个字符串，而非只应用于第一个匹配项处。</li>
+<li><code>i</code>表示将不区分大小写</li>
+<li><code>m</code>表示多行，即达到行尾时将会继续下一行中的查找。</li>
+</ul>
+<p>与其它语言相同，在使用特殊字符时仍需要<code>\</code>进行转义。在另一种使用<code>RegExp</code>的构造函数时，将会使用到双重转义，即如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//利用表达式，创建RegExp对象</span></span><br><span class="line"><span class="keyword">var</span> pattern1 = <span class="regexp">/[bc]at/i</span>;</span><br><span class="line"><span class="comment">//利用RegExp构造函数</span></span><br><span class="line"><span class="keyword">var</span> pattern2 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"[bc]at"</span>,<span class="string">"i"</span>);</span><br><span class="line"><span class="comment">//当遭遇需要转移的字符时，例如需要匹配[br]at时，利用表达式</span></span><br><span class="line"><span class="keyword">var</span> pattern3 = <span class="regexp">/\[bc\]at/i</span>;</span><br><span class="line"><span class="comment">//此时利用构造函数就需要使用到双重转义，如下</span></span><br><span class="line"><span class="keyword">var</span> patter4 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"\\[bc\\]at"</span>,<span class="string">"i"</span>);</span><br><span class="line"><span class="comment">//当需要匹配'\'时则需要使用连续的4个'\'，进行转移</span></span><br><span class="line"><span class="keyword">var</span> pattern5 = <span class="regexp">/\\hello\\/</span> <span class="comment">//匹配\hello\</span></span><br><span class="line"><span class="comment">//使用构造函数</span></span><br><span class="line"><span class="keyword">var</span> pattern6 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"\\\\hello\\\\"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="RegExp的实例属性"><a href="#RegExp的实例属性" class="headerlink" title="RegExp的实例属性"></a>RegExp的实例属性</h3><p>RegExp每个实例都有以下属性：</p>
+<ul>
+<li>global 布尔值，表示是否设置了g标志</li>
+<li>ignoreCase boolean 表示是否设置了i标识</li>
+<li>lastIndex 表示开始搜索下一个匹配项的字符位置</li>
+<li>multiline 是否设置了m标志</li>
+<li>source 正则表达式的字符串表示</li>
+</ul>
+<h3 id="RegExp的实例方法"><a href="#RegExp的实例方法" class="headerlink" title="RegExp的实例方法"></a>RegExp的实例方法</h3><p>主要方法为<code>exec()</code>，该方法是为了捕获组(即：子匹配)而设计的，<code>exec()</code>只接受一个参数，即要应用模式的字符串，然后返回一个匹配项的数组，如果没有匹配将返回<code>null</code>，若匹配成功将返回，一个<code>Array</code>对象和两个额外的属性，即<code>index</code>与<code>input</code>分别表示第一处匹配的下标处和输入的字符串。而<code>Array</code>对象中将存放着捕获组的字符串。</p>
+<p><strong>全局模式与非全局模式的区别</strong></p>
+<p>若使用全局模式在执行<code>exce()</code>方法时，将不断地移动lastIndex，以向字符串后部移动，若不启用全局模式，将不会移动字符串的指针，始终只返回第一处匹配的模式。</p>
+<p>第二个方法为<code>test()</code>方法，他将接受一个字符串参数，若存在匹配将返回true，若不存在匹配，则返回false，这个语句常被用于if语句之中。</p>
+<h3 id="RegExp的构造函数属性"><a href="#RegExp的构造函数属性" class="headerlink" title="RegExp的构造函数属性"></a>RegExp的构造函数属性</h3><p>构造函数属性在其他语言中被视为静态属性，他将返回作用域所有RegExp实例的一些特性。主要有以下属性：</p>
+<ul>
+<li><code>input</code>:短属性<code>$_</code>标识最近一次要匹配的字符串</li>
+<li><code>lastMatch</code>:短属性<code>$&amp;</code>最近一次的匹配项</li>
+<li><code>lastParen</code>:短属性<code>$+</code>最近一次的匹配组</li>
+<li><code>leftContext</code>:短属性 $` 返回input中lastMatch之前的文本</li>
+<li><code>multilin</code>:短属性<code>$*</code>表示是否所有表达式都使用了多行模式</li>
+<li><code>rightContext</code>:短属性<code>$&#39;</code>返回input中lastMatch后的文本</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/06/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%BA%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="常浩楷">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kailand">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/06/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%BA%8C/" itemprop="url">JavaScript读书笔记-二</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-06T10:18:13+08:00">
+                2020-07-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JavaScript中的内存"><a href="#JavaScript中的内存" class="headerlink" title="JavaScript中的内存"></a>JavaScript中的内存</h1><h2 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><p>​    JavaScript是一种具有自动垃圾回收机制的语言，执行环境会负责代码执行过程中的使用的内存。垃圾回收器会按照固定的时间间隔周期性的执行这一操作：找出不再被使用的变量，然后释放其占用的内存。</p>
+<h3 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h3><p>​    JavaScript最常使用的垃圾收集机制是标记清除，当变量进入环境中时，就将这个变量标记为进入环境，被标记为进入环境的变量将用不会被释放，当变量离开环境时，将其标记为离开环境。垃圾回收器在运行时，会首先为所有的储存在内存中的变量都加上标记，然后会去除环境中的变量以及被环境中的变量引用的变量的标记，将被添加上标记的变量视为可以删除的变量，然后垃圾回收器将完成内存的清理工作。到2008年，大部分的浏览器采用的策略均为标记清除式的垃圾回收策略。</p>
+<h3 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h3><p>​    引用技术将跟踪记录每个变量被引用的次数，当引用次数变为0时，该变量将被释放。但是遭遇了严重的问题，例如：循环引用问题，两个变量互相引用，两变量将永远不会被释放。为了避免该情况的发生，最好的方法是在不再使用变量时，手动断开变量的引用。</p>
+<h3 id="性能问题"><a href="#性能问题" class="headerlink" title="性能问题"></a>性能问题</h3><p>​    由于垃圾回收器是定期运行的，当使用的内存很大时，回收的工作量也将巨大。早期的IE6浏览器中，由于使用了不良好的垃圾回收机制，导致性能极差，在IE6中，当内存使用量一但到达了某个阈值，将触发垃圾回收机制，但是在某些程序中，这些内存将贯穿整个生命周期，所以就会频繁的触发垃圾回收机制，导致性能大幅度下降，在IE7中引入了阈值可变的垃圾回收机制，大大的解决的上述问题。</p>
+<h3 id="管理内存"><a href="#管理内存" class="headerlink" title="管理内存"></a>管理内存</h3><p>​    为了在编写程序时让页面获得更好的性能，最好的解决方案就是只保留程序执行所必须的数据，而其它数据一旦使用完毕，则立刻赋值为null来释放引用。这一做法适用于全局变量与全局对象。其他局部变量将在离开执行环境时自动解除引用。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/29/PHP%E4%B8%8EWeb%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="常浩楷">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kailand">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/29/PHP%E4%B8%8EWeb%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/" itemprop="url">PHP与Web开发学习笔记（三）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-29T23:46:33+08:00">
+                2020-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP%E4%B8%8EWeb%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP与Web开发学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="字符串操作与正则表达式-二"><a href="#字符串操作与正则表达式-二" class="headerlink" title="字符串操作与正则表达式(二)"></a>字符串操作与正则表达式(二)</h2><h5 id="substr-函数"><a href="#substr-函数" class="headerlink" title="substr()函数"></a><code>substr()</code>函数</h5><p>用法如下<code>string substr(string string,int start[,int length])</code></p>
+<p><code>start</code>为起始位置，可用负数。<code>length</code>也可用负数。</p>
+<h4 id="字符串比较函数"><a href="#字符串比较函数" class="headerlink" title="字符串比较函数"></a>字符串比较函数</h4><h5 id="strcmp-、strcasecmp-、strnatcmp-函数"><a href="#strcmp-、strcasecmp-、strnatcmp-函数" class="headerlink" title="strcmp()、strcasecmp()、strnatcmp()函数"></a><code>strcmp()</code>、<code>strcasecmp()</code>、<code>strnatcmp()</code>函数</h5><p><code>strcmp(str1,str2)</code>按照字典序排序，如果相同则返回0，若<code>str1</code>在<code>str2</code>后，则返回正数，若相反则返回负数。</p>
+<p><code>strcasecmp()</code>函数将不再区分大小写字母。</p>
+<p><code>strnatcmp()</code>函数将按照人们习惯的方式即自然排序，例如12将大于2.</p>
+<h5 id="strlen-函数-用于获取字符串长度"><a href="#strlen-函数-用于获取字符串长度" class="headerlink" title="strlen()函数 用于获取字符串长度"></a><code>strlen()</code>函数 用于获取字符串长度</h5><h4 id="字符串函数匹配和替换字符串"><a href="#字符串函数匹配和替换字符串" class="headerlink" title="字符串函数匹配和替换字符串"></a>字符串函数匹配和替换字符串</h4><h5 id="在字符串中查找字符串的函数strstr-、strchr-、strrchr-、stristr"><a href="#在字符串中查找字符串的函数strstr-、strchr-、strrchr-、stristr" class="headerlink" title="在字符串中查找字符串的函数strstr()、strchr()、strrchr()、stristr()"></a>在字符串中查找字符串的函数<code>strstr()</code>、<code>strchr()</code>、<code>strrchr()</code>、<code>stristr()</code></h5><p><code>strstr()</code>函数的原型如：</p>
+<p><code>string strstr(string haystack,string needle[,bool before_needle=false])</code></p>
+<p>haystack 表示要被搜索的字符串，before_needle表示返回那部分的字符串，为true时返回needle之前的部分字符串，为false时返回needle之后的字符串，返回第一个匹配的位置。</p>
+<p><code>stristr()</code>将不分大小。<code>strrchr()</code>将返回最后一个匹配的needle的位置。</p>
+<h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><p>正则表达式是一种描述文本所包含模式的方法，描述了一种文本的匹配模式，在PHP中，匹配正则表达式的模式更像是<code>strstr()</code>的匹配模式，而非<code>==</code>的匹配模式。</p>
+<h5 id="分隔符"><a href="#分隔符" class="headerlink" title="分隔符"></a>分隔符</h5><p>每个正则表达式必须被包含在一对分隔符之中，可以选择非字母、数字、\、和空格的任意符号作为分隔符。一般使用的分割符为<code>/</code>。分隔符后可以添加模式修饰符。</p>
+<h5 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h5><p><code>.</code>可以作为匹配换行符之外的任意字符。</p>
+<p>任何在<code>[]</code>中的都将被视为一个字符集，但是将只匹配一个字符</p>
+<p>例：</p>
+<p><code>/[aeiou]/</code>将只匹配括号中的元素。可以用<code>-</code>表示一个范围，<code>/[a-zA-Z]/</code>将匹配任意的字母。<code>/[^a-z]/</code>匹配不属于集合中的字符。</p>
+<p>部分预定义的集合</p>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>匹配</th>
+<th>类</th>
+<th>匹配</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>[[:alnum:]]</code></td>
+<td>文字数字字符</td>
+<td><code>[[:punct:]]</code></td>
+<td>标点符号</td>
+</tr>
+<tr>
+<td><code>[[:alpha:]]</code></td>
+<td>字母</td>
+<td><code>[[:blank:]]</code></td>
+<td>制表符和空格</td>
+</tr>
+<tr>
+<td><code>[[:asci:]]</code></td>
+<td>ASCII字符</td>
+<td><code>[[:lower:]]</code></td>
+<td>小写字母</td>
+</tr>
+<tr>
+<td><code>[[:space:]]</code></td>
+<td>空白字符</td>
+<td><code>[[:upper:]]</code></td>
+<td>大写字母</td>
+</tr>
+<tr>
+<td><code>[[:cntrl:]]</code></td>
+<td>控制符</td>
+<td><code>[[:digit:]]</code></td>
+<td>小数</td>
+</tr>
+<tr>
+<td><code>[[:print:]]</code></td>
+<td>所有可打印的字符</td>
+<td><code>[[:xdigit:]]</code></td>
+<td>十六进制数字</td>
+</tr>
+<tr>
+<td><code>[[:graph:]]</code></td>
+<td>触空格外</td>
+<td><code>[[:word:]]</code></td>
+<td>word字符（字母，数字和下划线）</td>
+</tr>
+</tbody></table>
+<h5 id="重复"><a href="#重复" class="headerlink" title="重复"></a>重复</h5><p><code>*</code>表示这个模式可以出现0次或更多次 <code>+</code>表示出现一次或更多<code>?</code>表示出现0次或者1次</p>
+<p>例：<code>[[:alnum:]]+</code>表示至少一个字母字符</p>
+<h5 id="子表达式"><a href="#子表达式" class="headerlink" title="子表达式"></a>子表达式</h5><p><code>()</code>括号中，可以被视为一个表达式与计算中的<code>()</code>相同。例：<code>/(very )* large/</code>可用于匹配<code>&quot;large&quot;</code>、<code>&quot;very large&quot;</code>、<code>&quot;very very large&quot;</code>等</p>
+<h5 id="子表达式计数"><a href="#子表达式计数" class="headerlink" title="子表达式计数"></a>子表达式计数</h5><p>可以用<code>{}</code>指定子表达式可以出现的次数。例：<code>/(very ){1,3}/</code>表示要出现1-3次，若没有指定上限，则表示至少出现几次，也可以只用一个数字指定出现的次数。</p>
+<h5 id="定位到字符串的开头与结尾"><a href="#定位到字符串的开头与结尾" class="headerlink" title="定位到字符串的开头与结尾"></a>定位到字符串的开头与结尾</h5><p><code>^</code>表示该模式的匹配必须出现在字符串的起始位置，<code>$</code>表示该模式出现在字符串的结尾。</p>
+<p>例：<code>/^bob/</code>表示匹配开头处为bob的字符串，<code>/com$/</code>匹配以com结尾的字符串，<code>/^[a-z]$/</code>将匹配只有一个字母的字符串。</p>
+<h5 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h5><p>用<code>|</code>表示模式的选择。例：<code>/com|edu|net/</code>，将匹配这三个字符其中之一。</p>
+<h5 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h5><p>在匹配特殊字符时，必须在字符前加<code>\</code>作为转义。<strong>在PHP中，必须使用单引号来进行模式的引用，如果使用双引号则必须使用双反斜杠进行转义，即使用<code>\\</code> <code>\\</code>php解释器像将其翻译为<code>\\</code>正则解释器再将其翻译为<code>\</code>。</strong></p>
+<h5 id="转义序列"><a href="#转义序列" class="headerlink" title="转义序列"></a>转义序列</h5><p><code>\</code>反斜杠转义符，不仅可以用来进行特殊字符的转义，也就可用与常规字符的转义，例如<code>\n</code>表示换行符<code>\r</code>表示回车符<code>\t</code>表示制表符等，在正则表达式中也出现了一些定义好的字符类型，如下表。</p>
+<table>
+<thead>
+<tr>
+<th>字符类型</th>
+<th>含义</th>
+<th>字符类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>\d</code></td>
+<td>十进制数字</td>
+<td><code>\S</code></td>
+<td>非空白字符</td>
+</tr>
+<tr>
+<td><code>\D</code></td>
+<td>任意非十进制数字</td>
+<td><code>\v</code></td>
+<td>垂直空白字符</td>
+</tr>
+<tr>
+<td><code>\h</code></td>
+<td>水平空白字符</td>
+<td><code>\V</code></td>
+<td>任意非垂直空白字符</td>
+</tr>
+<tr>
+<td><code>\H</code></td>
+<td>任意非水平空白字符</td>
+<td><code>\w</code></td>
+<td>单词字符</td>
+</tr>
+<tr>
+<td><code>\s</code></td>
+<td>空白字符</td>
+<td><code>\W</code></td>
+<td>任意非单词字符</td>
+</tr>
+</tbody></table>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/29/PHP%E4%B8%8EWeb%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="常浩楷">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kailand">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/29/PHP%E4%B8%8EWeb%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="url">PHP与Web开发学习笔记（二）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-29T16:12:52+08:00">
+                2020-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP%E4%B8%8EWeb%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP与Web开发学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="字符串操作与正则表达式-一"><a href="#字符串操作与正则表达式-一" class="headerlink" title="字符串操作与正则表达式(一)"></a>字符串操作与正则表达式(一)</h2><h4 id="1-通过htmlspecialchars-过滤输出到浏览器的特殊字符"><a href="#1-通过htmlspecialchars-过滤输出到浏览器的特殊字符" class="headerlink" title="1. 通过htmlspecialchars()过滤输出到浏览器的特殊字符"></a>1. 通过<code>htmlspecialchars()</code>过滤输出到浏览器的特殊字符</h4><p>该函数将把在HTML中具有特殊含义的字符转化成为等价的HTML实体，以防止可能造成的页面布局变化与安全问题。</p>
+<p>该函数的函数原型如下</p>
+<p><code>string htmlspecialchars(string string[,int flags = ENT_COMPAT|ENT_HTML401[,string encoding=&#39;UFT-8&#39;[,bool double_encode = true]]])</code></p>
+<p>该函数具有一个必选参数以及三个可选参数。</p>
+<p>第一个必选参数即<code>string</code>，为目标字符串。第二个参数为可选参数<code>flags</code>，指定了该函数将如何进行翻译，可以使用位掩码来表示可能的组合值。其中<code>flags</code>的可选值如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th align="left">标志</th>
+<th align="left">意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>ENT_COMPAT</code></td>
+<td align="left">对双引号编码，不对单引号编码</td>
+</tr>
+<tr>
+<td align="left"><code>ENT_NOQUOTES</code></td>
+<td align="left">不对单引号和双引号编码</td>
+</tr>
+<tr>
+<td align="left"><code>ENT_QUOTES</code></td>
+<td align="left">对双引号和单引号编码</td>
+</tr>
+<tr>
+<td align="left"><code>ENT_HTML401</code></td>
+<td align="left">将代码视作HTML 4.01</td>
+</tr>
+<tr>
+<td align="left"><code>ENT_XML1</code></td>
+<td align="left">将代码当作XML 1</td>
+</tr>
+<tr>
+<td align="left"><code>ENT_XHTML</code></td>
+<td align="left">将代码视作XHTML</td>
+</tr>
+<tr>
+<td align="left"><code>ENT_HTML5</code></td>
+<td align="left">将代码视作HTML 5</td>
+</tr>
+<tr>
+<td align="left"><code>ENT_IGNORE</code></td>
+<td align="left">不返回空字符串，并且忽略无效的代码序列</td>
+</tr>
+<tr>
+<td align="left"><code>ENT_SUBTITUTE</code></td>
+<td align="left">用unicode替换字符替换无效的代码单元序列</td>
+</tr>
+<tr>
+<td align="left"><code>ENT_DISALLOWED</code></td>
+<td align="left">用unicode替换无效的代码点</td>
+</tr>
+</tbody></table>
+<p>第三个为可选参数<code>encoding</code>即编码，默认为UTF-8</p>
+<p>第四个为可选参数，制定了为是否需要对HTML实体进行编码，默认值为真。</p>
+<h4 id="2-其他输出过滤函数"><a href="#2-其他输出过滤函数" class="headerlink" title="2.其他输出过滤函数"></a>2.其他输出过滤函数</h4><h5 id="str-replace-函数"><a href="#str-replace-函数" class="headerlink" title="str_replace()函数"></a><code>str_replace()</code>函数</h5><p>其函数原型如下：<code>str_replace(find,replace,string,count)</code>，find为必须参数，为要查找的值，replace为要被替换成为的字符串，string为目标字符串，count为替换数进行计数。</p>
+<p>该函数将返回一个被替换完的字符串的拷贝，原字符串将保持不变。</p>
+<h5 id="nl2br-函数：他将会把字符串中的-n换行符换成HTML中的-lt-br-gt-的换行符。"><a href="#nl2br-函数：他将会把字符串中的-n换行符换成HTML中的-lt-br-gt-的换行符。" class="headerlink" title="nl2br()函数：他将会把字符串中的\n换行符换成HTML中的&lt;br/&gt;的换行符。"></a><code>nl2br()</code>函数：他将会把字符串中的<code>\n</code>换行符换成HTML中的<code>&lt;br/&gt;</code>的换行符。</h5><h4 id="3-格式化输出字符串"><a href="#3-格式化输出字符串" class="headerlink" title="3.格式化输出字符串"></a>3.格式化输出字符串</h4><p>###<code>printf()</code>函数与C语言中的用法相同。</p>
+<h4 id="4-字符串连接与分割"><a href="#4-字符串连接与分割" class="headerlink" title="4. 字符串连接与分割"></a>4. 字符串连接与分割</h4><h5 id="explode-函数"><a href="#explode-函数" class="headerlink" title="explode()函数"></a><code>explode()</code>函数</h5><p>原型如下：</p>
+<p><code>array explode(string separator, string input[,int limit])</code></p>
+<p>其中separator作为分隔符，input作为输入，limit为可选参数，作为块数分割的上限。</p>
+<blockquote>
+<p>用<code>each()</code>循环数组的方法</p>
+<p>示例代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $str = <span class="string">"1371635573@qq.com"</span>;</span><br><span class="line">  $res = explode(<span class="string">'@'</span>,$str);</span><br><span class="line">  reset($res);</span><br><span class="line">  <span class="keyword">while</span>($el = each($res))&#123;</span><br><span class="line">    <span class="keyword">echo</span> nl2br($el[<span class="number">0</span>].<span class="string">". "</span>.$el[<span class="number">1</span>].<span class="string">"&lt;br&gt;"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>运行后产生的结果如下：</p>
+<ol start="0">
+<li><p>1371635573</p>
+</li>
+<li><p>qq.com</p>
+</li>
+</ol>
+<p>每次遍历产生的<code>$el</code>变量也为一个数组,长度为2，第一个保存着该项的索引，第二个保存着该项的值，可以用数组方法即0，1下表索引也可用 ‘key’ 和’value’用于访问。</p>
+</blockquote>
+<h5 id="implode与join函数"><a href="#implode与join函数" class="headerlink" title="implode与join函数"></a><code>implode</code>与<code>join</code>函数</h5><p>改两函数作用相同，均为将数组连接成为一个字符串。</p>
+<h5 id="strtok函数"><a href="#strtok函数" class="headerlink" title="strtok函数"></a><code>strtok</code>函数</h5><p>与<code>explode</code>用法类似将字符串分割，但是与<code>explode</code>不同，该函数将分割出单个字符串只返回一个字符串。</p>
+<p>但是该函数的调用方法并不只有表面上的简单，当调用该函数时，其内部将会保存字符串的指针。在接下来的调用过程中，就只需传递分隔符即可，要充值该指针，用其它字符串传入该函数即可。</p>
+<p>示例代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  $str = <span class="string">"aaa  bbb  ccc  ddd"</span>;</span><br><span class="line">  $token = strtok($str,<span class="string">"  "</span>);</span><br><span class="line">  <span class="keyword">while</span>($token!=<span class="string">""</span>)&#123;</span><br><span class="line">    <span class="keyword">echo</span> $token.<span class="string">"&lt;br&gt;"</span>;</span><br><span class="line">    $token = strtok(<span class="string">"  "</span>);</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">aaa</span><br><span class="line">bbb</span><br><span class="line">ccc</span><br><span class="line">ddd</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/21/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%B8%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="常浩楷">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kailand">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/21/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%B8%80/" itemprop="url">JavaScript读书笔记(一)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-21T10:11:03+08:00">
+                2020-06-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="第二章-在HTML中使用JavaScript"><a href="#第二章-在HTML中使用JavaScript" class="headerlink" title="第二章 在HTML中使用JavaScript"></a>第二章 在HTML中使用JavaScript</h2><h3 id="1-lt-script-gt-标签的使用"><a href="#1-lt-script-gt-标签的使用" class="headerlink" title="1. &lt;script&gt;标签的使用"></a>1. <code>&lt;script&gt;</code>标签的使用</h3><p><code>&lt;script&gt;</code>是向HTML标签中添加脚本的主要方法，这个元素最早由Netscape创造。</p>
+<p>​    HTML 4.01 规定了如下6个元素。</p>
+<p>​    <code>async</code>：可选，表示立即下载该脚本，但是不阻塞页面中的其他操作，例如下载其他资源、等待加载其他脚本，<strong>只对外部脚本起作用</strong>。</p>
+<p>​    <code>charset</code>：可选，表示通过src获得的脚本文件的字符集，但大部分浏览器会忽略其值，<strong>该属性很少人使用</strong></p>
+<p>​    <code>defer</code>：可选。表示脚本可以延迟到文档被完全解析后和显示后，在进行执行，<strong>只对外部脚本有效</strong></p>
+<p>​    <code>language</code>：已废弃，表示用于编写代码的语言。<strong>现已被大部分浏览器忽略</strong></p>
+<p>​    <code>src</code>：可选。表示包含着要执行代码的外部文件。</p>
+<p>​    <code>type</code>：可选。表示编写代码的内容类型(也称MIME类型)，<code>text/javascript</code>已经不被人推荐使用，服务器在传送使用的MIME类型通常是<code>application/x-javascript</code>，但是在脚本中设置该值可能导致脚本被忽略。考虑到约定俗成和最大限度的浏览器兼容性，目前该值仍旧填写<code>text/javascript</code>，不过这个值不是必须的，没有指定该属性，择其默认值为<code>text/javascript</code></p>
+<p>使用<code>&lt;script&gt;</code>标签时，使用如下的格式：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">balabala</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">/*some code here*/</span></span></span><br><span class="line">    &#125;</span><br><span class="line">    /*</span><br><span class="line">    	some more code</span><br><span class="line">    */</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>包含在标签中的代码将被顺序解释执行。<strong>不要在<code>&lt;script&gt;</code>标签包裹的代码之中出现<code>&lt;/script&gt;</code></strong></p>
+<p>在<code>&lt;script&gt;</code>标签中使用外部脚本文件的方法：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"example.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>嵌入式的脚本代码与引用外部文件的脚本代码(包括下载时)，页面的处理会暂时停止</strong></p>
+<p>下面的格式虽然符合XHTML文档规范，但是不符合html规范，在浏览器中也无法得到正确的解析。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"example.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>外部的文件的 .js 拓展名并不必须，浏览器不会检查包含JavaScript文件的文件拓展名，只会下载外部文件，但是如果使用JSP等技术动态生成脚本代码，请注意正确的MIME类型</strong></p>
+<p><strong>带有src的script标签不应该在标签之中包裹其他的代码</strong></p>
+<p><strong>src属性还可加载外部域的javascript代码</strong></p>
+<h4 id="标签的位置"><a href="#标签的位置" class="headerlink" title="标签的位置"></a>标签的位置</h4><p>​    按照惯例，<code>&lt;scirpt&gt;</code>标签都应位于<code>&lt;head&gt;</code>标签之中，这样做可以使所有引用的外部文件放在相同的地方，如css，js代码等。如图</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>An example<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"example1.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"example1.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--some more code here....--&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--content here--&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>但这意味着必须等待全部的javascript代码全部被下载，解析之后，页面才会开始进行展示，这就会导致页面产生明显的延迟。(浏览器在于到<code>&lt;body&gt;</code>标签是才会开始展示内容)，所以现代的web页面一般采取下面的形式。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>An example<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--some more code here....--&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--content here--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"example1.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"example1.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在展示页面之后才会下载解释脚本，使用户感到空白页面的时间缩短了。</p>
+<h4 id="defer脚本"><a href="#defer脚本" class="headerlink" title="defer脚本"></a>defer脚本</h4><p>带有defer属性的脚本会告诉浏览器，脚本在此处被下载，但直到解析到带有<code>&lt;/html&gt;</code>才会开始执行脚本代码。</p>
+<h4 id="async脚本"><a href="#async脚本" class="headerlink" title="async脚本"></a>async脚本</h4><p>与defer相同，遇到标签时仍旧会进行脚本的下载，但是与defer不同的是，标记为async的脚本代码，并不一定会按照脚本标签出现的顺序执行，而标记为defer的脚本则会。但是脚本一定会在页面的load事件之前执行，但可能会在DOMContentLoaded事件之前触发或之后执行，<strong>建议在async脚本中不进行DOM操作</strong></p>
+<h5 id="补充：Web页面的生命周期"><a href="#补充：Web页面的生命周期" class="headerlink" title="补充：Web页面的生命周期"></a>补充：Web页面的生命周期</h5><blockquote>
+<p>编写以下代码进行web生命周期事件的测试</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="meta">&lt;!DOCTYPE <span class="meta-keyword">HTML</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;<span class="name">title</span>&gt;</span>42度空间-Html页面的生命周期,DOMContentLoaded,load,beforeunload,unload<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"http://res.42du.cn/static/html/iframe.html"</span> <span class="attr">height</span>=<span class="string">"35"</span> <span class="attr">onload</span>=<span class="string">"append('iframe onload')"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://res.42du.cn/up/201802/cbbtiga6.jpg?cache=none"</span> <span class="attr">onload</span>=<span class="string">"append('image onload')"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">&gt;<span class="keyword">var</span> output = <span class="string">""</span>;</span></span><br><span class="line"><span class="actionscript">&gt;<span class="function"><span class="keyword">function</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">  <span class="built_in">document</span>.getElementById(<span class="string">"main"</span>).innerHTML += output;</span></span><br><span class="line">&gt;&#125;</span><br><span class="line"><span class="actionscript">&gt;<span class="function"><span class="keyword">function</span> <span class="title">append</span><span class="params">(data)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">  output += data+<span class="string">" &lt;br /&gt;"</span>;</span></span><br><span class="line">&gt;&#125;</span><br><span class="line"><span class="javascript">&gt;<span class="built_in">document</span>.addEventListener(<span class="string">'readystatechange'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">  append(<span class="string">"readyState : "</span>+<span class="built_in">document</span>.readyState);</span></span><br><span class="line">&gt;&#125;);</span><br><span class="line"><span class="javascript">&gt;<span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="actionscript">  append(<span class="string">"DOMContentLoaded"</span>);</span></span><br><span class="line">&gt;&#125;);</span><br><span class="line"><span class="javascript">&gt;<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="actionscript">  append(<span class="string">"window onload"</span>);</span></span><br><span class="line">  print();</span><br><span class="line">&gt;&#125;;</span><br><span class="line"><span class="actionscript">&gt;append(<span class="string">"script executed"</span>);</span></span><br><span class="line">&gt;<span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">&gt;<span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>得到结果结果如下：</p>
+<ul>
+<li>script executed</li>
+<li>readyState : interactive</li>
+<li>DOMContentLoaded</li>
+<li>image onload</li>
+<li>iframe onload</li>
+<li>readyState : complete</li>
+<li>window onload</li>
+</ul>
+<p>同步的脚本代码将会优先于所有事件，首先进行，它优于DOMContentLoaded时间执行。</p>
+<p>当文档解析完毕，页面重新渲染，所有同步js代码执行完成后，会触发DOMContentLoaded</p>
+<p>当html代码中的img，js代码中的异步css与js完毕后，会触发load事件</p>
+</blockquote>
+<h3 id="2-嵌入代码与外部文件"><a href="#2-嵌入代码与外部文件" class="headerlink" title="2.嵌入代码与外部文件"></a>2.嵌入代码与外部文件</h3><p><strong>虽然在HTML中嵌入代码是可行的，但是一般认为更好的做法是尽可能使用外部脚本进行加载脚本。</strong></p>
+<p>优点：易于维护，可缓存，适应未来(???)</p>
+<h3 id="3-lt-noscript-gt-标签"><a href="#3-lt-noscript-gt-标签" class="headerlink" title="3.&lt;noscript&gt;标签"></a>3.<code>&lt;noscript&gt;</code>标签</h3><p><code>&lt;noscript&gt;</code>中的内容会在以下情况会显示出来来。</p>
+<ul>
+<li>浏览器不支持脚本</li>
+<li>浏览支持脚本，但脚本被禁用</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/12/PHP%E4%B8%8EWeb%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="常浩楷">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kailand">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/12/PHP%E4%B8%8EWeb%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" itemprop="url">PHP与Web开发学习笔记（一）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-12T18:01:15+08:00">
+                2020-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP%E4%B8%8EWeb%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP与Web开发学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="PHP与Web开发学习笔记-一"><a href="#PHP与Web开发学习笔记-一" class="headerlink" title="PHP与Web开发学习笔记(一)"></a>PHP与Web开发学习笔记(一)</h1><h3 id="Variable-Handling-Functions"><a href="#Variable-Handling-Functions" class="headerlink" title="Variable Handling Functions"></a>Variable Handling Functions</h3><h4 id="Testing-and-Setting-variable"><a href="#Testing-and-Setting-variable" class="headerlink" title="Testing and Setting variable"></a>Testing and Setting variable</h4><p><code>gettype ()</code> and <code>settype()</code> are the funtions that are used most generally. And the following are their funtion prototypes.</p>
+<p><code>string gettype(mixed var)</code></p>
+<p><code>bool settype(mixed var,string type)</code></p>
+<h5 id="The-Specific-Funtions"><a href="#The-Specific-Funtions" class="headerlink" title="The Specific Funtions"></a>The Specific Funtions</h5><p><code>is_array()</code> <code>is_double</code> <code>is_long</code> <code>is_string</code> <code>is_bool</code> <code>is_obeject</code> `</p>
+<p><code>is_resource()</code>-Checks whether the variable is a resource</p>
+<blockquote>
+<p><strong>What is a resource variable?</strong></p>
+<p>A resource is a special variable, holding a reference to an  external resource. Resources are created and used by special functions.</p>
+<p>E.G.：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$c = mysql_connect();</span><br><span class="line"><span class="keyword">echo</span> get_resource_type($c).<span class="string">"\n"</span>;</span><br><span class="line"><span class="comment">// 打印：mysql link</span></span><br></pre></td></tr></table></figure>
+
+<p>And the $c is resource variable</p>
+</blockquote>
+<p><code>is_null()</code>,<code>is_numberic</code> </p>
+<p> <code>is_scalar()</code>-Checks whether the variable is a scalar-that is an integer,boolean,string or float</p>
+<p><code>is_callable()</code>-Checks whether the variable is the name of a valid function</p>
+<h5 id="Testing-Variable-Status"><a href="#Testing-Variable-Status" class="headerlink" title="Testing Variable Status"></a>Testing Variable Status</h5><p><code>isset(var)</code> Returns true if it exists and false otherwise.</p>
+<p><code>unset(var)</code> This function gets rid of the variable it is passed</p>
+<p> <code>bool empty(var)</code> The function checks to see whether a variable exists and has a a <strong>nonempty</strong>, <strong>nonzero value</strong>. It will generates a blank if it returns false.</p>
+<h5 id="Reinterpreting-Variables"><a href="#Reinterpreting-Variables" class="headerlink" title="Reinterpreting Variables"></a>Reinterpreting Variables</h5><p><code>int intval(var,int base=10)</code>,<code>float floatval(var)</code>,<code>string  strval(var)</code></p>
+<p>The three functions  above will accepts a variable as input and and it will returns the variable’s value converted to the appropriate type.</p>
+<h3 id="Making-Decision-with-Statements"><a href="#Making-Decision-with-Statements" class="headerlink" title="Making Decision with Statements"></a>Making Decision with Statements</h3><p><code>if</code> <code>else</code> <code>elseif</code> and <code>switch</code>  <em>Attention! use the <code>break</code> statement</em></p>
+<h3 id="Repeating-Actions-Through-Iteration"><a href="#Repeating-Actions-Through-Iteration" class="headerlink" title="Repeating Actions Through Iteration"></a>Repeating Actions Through Iteration</h3><p><code>while</code> </p>
+<p><code>for</code></p>
+<p><em><strong>A Demo</strong></em></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>($i=<span class="number">1</span>;$i&lt;=$numnames;$i++)&#123;</span><br><span class="line">    $temp=<span class="string">"name$i"</span>;</span><br><span class="line">    <span class="keyword">echo</span> htmlspecialchars($$temp).<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>foreach</code> loops which is specially designed for arrays.</p>
+<p><code>do...while</code></p>
+<p><code>exit</code> -Finish the script</p>
+<p><code>break</code>,<code>continue</code></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/11/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="常浩楷">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kailand">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/11/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="url">课堂笔记（操作系统）（二）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-11T10:07:46+08:00">
+                2020-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">课堂笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="课堂笔记（操作系统）（二）"><a href="#课堂笔记（操作系统）（二）" class="headerlink" title="课堂笔记（操作系统）（二）"></a>课堂笔记（操作系统）（二）</h1><h3 id="进程管理中的数据结构"><a href="#进程管理中的数据结构" class="headerlink" title="进程管理中的数据结构"></a>进程管理中的数据结构</h3><h4 id="进程控制块"><a href="#进程控制块" class="headerlink" title="进程控制块"></a>进程控制块</h4><p><strong>作用</strong>：</p>
+<ol>
+<li>独立运行基本单位的标志</li>
+<li>能实现间断性运行方式</li>
+<li>提供进程管理所需要的信息</li>
+<li>提供进程调度所需要的信息</li>
+<li>实现与其它进程的同步与通信</li>
+</ol>
+<p><strong>内容</strong>：</p>
+<ol>
+<li><p>进程标识符信息</p>
+<blockquote>
+<p> <strong>进程标识符用于惟一地标识一个进程。一个进程通常有两种标识符</strong></p>
+<ol>
+<li>内部标识符  <em>为每一个进程赋予一个惟一的数字标识符</em></li>
+<li>外部标识符  <em>它由创建者提供(进程的名字)，通常是由字母、数字组成，往往是由用户（进程）在访问该进程时使用</em></li>
+</ol>
+</blockquote>
+</li>
+<li><p>处理器状态信息</p>
+<blockquote>
+<p><strong>处理机状态信息主要是由处理机的各种寄存器中的内容组成的</strong></p>
+</blockquote>
+</li>
+<li><p>进程调度信息</p>
+<blockquote>
+<ol>
+<li>进程状态。指明进程的当前状态</li>
+<li>进程优先级</li>
+<li>进程调度所需的其它信息  <em>进程已等待CPU的时间总和、进程已执行的时间总和等</em></li>
+<li>事件 <em>即 阻塞原因</em>     通过PCB中存储的该进程的阻塞事件，找到该进程所在的阻塞队列</li>
+</ol>
+</blockquote>
+</li>
+<li><p>进程控制信息</p>
+<blockquote>
+<ol>
+<li>程序和数据的地址</li>
+<li>进程同步和通信机制</li>
+<li>资源清单</li>
+<li>链接指针</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<p>实时操作系统中没有进程的概念，调度单位是任务，相当于线程</p>
+<h3 id="作业调度的过程"><a href="#作业调度的过程" class="headerlink" title="作业调度的过程"></a>作业调度的过程</h3><p>将程序装入内存-&gt;创建进程-&gt;进入就绪队列-&gt;被调度-&gt;执行</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/09/C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="常浩楷">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kailand">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/09/C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%A4%9A%E7%BA%BF%E7%A8%8B/" itemprop="url">C语言中的多线程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-09T16:16:14+08:00">
+                2020-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index">
+                    <span itemprop="name">C语言</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C%E8%AF%AD%E8%A8%80/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" itemprop="url" rel="index">
+                    <span itemprop="name">多线程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="C语言中的多线程"><a href="#C语言中的多线程" class="headerlink" title="C语言中的多线程"></a>C语言中的多线程</h1><p>在linux下进行编程需要使用头文件pthread.h，在编译时同时要加上<code>-lpthread</code>选项，使gcc在编译时连接到这些库的二进制代码。</p>
+<h3 id="创建线程-pthread-create函数"><a href="#创建线程-pthread-create函数" class="headerlink" title="创建线程 pthread_create函数"></a>创建线程 pthread_create函数</h3><p><code>pthread_create(&amp;thrd1,NULL,(void*)&amp;thread_fuction,(void*)&amp;some_argument)</code> </p>
+<p>线程创建函数主要需要4个参数，第一个为线程变量名，即被创建的线程变量的地址，第二个参数为线成的属性指针，缺省值为NULL，第三个参数被创建的程序代码，即该线程所要执行的函数的函数指针，第四个参数为上述函数在执行时所需要的参数。</p>
+<h3 id="结束线程-pthread-exit函数"><a href="#结束线程-pthread-exit函数" class="headerlink" title="结束线程 pthread_exit函数"></a>结束线程 pthread_exit函数</h3><p><code>pthread_exit(void *retval);</code></p>
+<p>retval变量用于存放线程结束的退出状态。</p>
+<h3 id="线程等待函数pthread-join函数"><a href="#线程等待函数pthread-join函数" class="headerlink" title="线程等待函数pthread_join函数"></a>线程等待函数pthread_join函数</h3><p><code>pthread_join (thrd1,NULL);</code></p>
+<p>在运用<code>pthread_create</code>成功创建多个线程后用户并不知道哪个线程会先被执行。我们需要运用<code>pthread_join</code>函数来等待某个线程的结束。</p>
+<h3 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h3><p>一个关于线程同时访问统一数据时所会遇到的问题。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">trd1</span><span class="params">(<span class="keyword">void</span> *p)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;<span class="number">1000</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"now n is %d--thrd1\n"</span>,n);</span><br><span class="line">		n+=<span class="number">1</span>;</span><br><span class="line">		sleep(<span class="number">0.1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">trd2</span><span class="params">(<span class="keyword">void</span> *p)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;<span class="number">1000</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"now n is %d --thrd2\n"</span>,n);</span><br><span class="line">		n = <span class="number">0</span>;</span><br><span class="line">		sleep(<span class="number">0.13</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">pthread_t</span> thrd1,thrd2;</span><br><span class="line">	<span class="keyword">int</span> temp1,temp2;</span><br><span class="line">	pthread_create(&amp;thrd1,<span class="literal">NULL</span>,trd1,<span class="literal">NULL</span>);</span><br><span class="line">	pthread_create(&amp;thrd2,<span class="literal">NULL</span>,trd2,<span class="literal">NULL</span>);</span><br><span class="line">	</span><br><span class="line">	temp2 = pthread_join(thrd2,<span class="literal">NULL</span>);</span><br><span class="line">	temp1 = pthread_join(thrd1,<span class="literal">NULL</span>);</span><br><span class="line">	<span class="keyword">if</span>(temp1==<span class="number">0</span>)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"线程1已成功结束"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(temp2==<span class="number">0</span>)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"线程2已成功结束"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"The n is %d at the end \n"</span>,n);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/09/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="常浩楷">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kailand">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/09/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/" itemprop="url">课堂笔记（操作系统）（一）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-09T16:15:56+08:00">
+                2020-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">课堂笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="课堂笔记（操作系统）（一）"><a href="#课堂笔记（操作系统）（一）" class="headerlink" title="课堂笔记（操作系统）（一）"></a>课堂笔记（操作系统）（一）</h1><h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><h4 id="调度器"><a href="#调度器" class="headerlink" title="调度器"></a>调度器</h4><p>常驻内存，不是一个进程，但是可以被执行。</p>
+<p>就绪状态的任务才能有资格被执行。</p>
+<h4 id="进程的特征"><a href="#进程的特征" class="headerlink" title="进程的特征"></a>进程的特征</h4><ol>
+<li>动态性  <em>由”创建而产生，由调度而执行，有撤消而消亡“</em></li>
+<li>并发性  _多个进程实体同存于内存之中，且能在一段时间内同时运行_。</li>
+<li>独立性  <em>进程实体是一个能独立运行</em></li>
+<li>异步性  <em>指进程按各自独立的、不可预知的速度向前推进，或说进程实体按异步方式运行</em></li>
+</ol>
+<h4 id="进程的三种状态"><a href="#进程的三种状态" class="headerlink" title="进程的三种状态"></a>进程的三种状态</h4><ol>
+<li><p>就绪状态  <em>万事俱备，只差CPU</em></p>
+</li>
+<li><p>执行状态  <em>正在执行</em></p>
+</li>
+<li><p>阻塞状态  _当前正在执行的进程由于某事件而暂时无法继续执行时，便进入暂停状态，即阻塞状态_。</p>
+<img src="/2020/03/09/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/1.png" class="" title="a pic">
+
+<blockquote>
+<p>往往根据阻塞原因，系统中会设置多个阻塞队列，当不同的阻塞原因解除时，方便调度不同的进程执行。</p>
+<p><strong>时间片到达而被抢占CPU任务从执行状态变为就绪状态</strong></p>
+<p><strong>sleep休眠，那么将从运行态变为阻塞态(等待态)</strong></p>
+<p>等待态与阻塞态为一种状态</p>
+<p><strong>如果执行状态的进程被中断，那么将会到就绪态</strong></p>
+<p>进程状态只能同时处于一种状态</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="进程的创建与终值"><a href="#进程的创建与终值" class="headerlink" title="进程的创建与终值"></a>进程的创建与终值</h4><ol>
+<li><p>创建状态 <em>资源无法得到满足</em></p>
+</li>
+<li><p>终止状态  </p>
+</li>
+<li><p>挂起状态  <em>对任何状态的进程都可以挂起</em></p>
+<blockquote>
+<p>引入挂起状态的原因：</p>
+<ol>
+<li>终端用户的请求</li>
+<li>父进程的请求</li>
+<li>负荷调节的需要，把一些不重要的进程挂起</li>
+<li>操作系统的需求</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/06/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="常浩楷">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kailand">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/06/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/" itemprop="url">课堂笔记（数据库）（一）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-06T22:02:51+08:00">
                 2020-03-06
               </time>
             
@@ -338,8 +2077,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机网络</span>
+                  <a href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
                   </a>
                 </span>
 
@@ -377,409 +2116,68 @@
       
         
           
-            <h3 id="应用层协议"><a href="#应用层协议" class="headerlink" title="应用层协议"></a>应用层协议</h3><ol>
-<li><p>公共领域协议</p>
-<blockquote>
-<p>由RFC文档确定</p>
-<p>可供大家使用</p>
-<p>如：HTTP,SMTP</p>
-</blockquote>
-</li>
-<li><p>TCP协议</p>
-<blockquote>
-<p>面向连接(客户机程序和服务器程序之间必须建立连接)</p>
-<p>可靠的传输服务</p>
-<p>流量控制</p>
-<p>拥塞控制</p>
-<p><strong>没有提供</strong>:时延保证、最小带宽</p>
-</blockquote>
-</li>
-<li><p>UDP协议</p>
-<blockquote>
-<p>不可靠的数据传输</p>
-<p><strong>没有提供</strong>:建立连接，可靠性，流量控制，拥塞控制，时延和带宽保证</p>
-</blockquote>
-</li>
+            <h1 id="课堂笔记（数据库）（一）"><a href="#课堂笔记（数据库）（一）" class="headerlink" title="课堂笔记（数据库）（一）"></a>课堂笔记（数据库）（一）</h1><h3 id="桌面级DBMS与企业级DBMS系统比较"><a href="#桌面级DBMS与企业级DBMS系统比较" class="headerlink" title="桌面级DBMS与企业级DBMS系统比较"></a>桌面级DBMS与企业级DBMS系统比较</h3><ol>
+<li>桌面级DBMS功能简单、软件体量小、处理能力弱、通常只支持单一语言的应用程序开发。例：<strong>Access</strong></li>
+<li>企业级DBMS功能完善、软件体量大、处理能力强、支持多种不同语言的应用开发.例：<strong>Oracle DB</strong></li>
 </ol>
-<h3 id="Web和HTTP"><a href="#Web和HTTP" class="headerlink" title="Web和HTTP"></a>Web和HTTP</h3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="常浩楷">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kailand">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/04/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/" itemprop="url">课堂笔记（计网）（一）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-04T16:09:08+08:00">
-                2020-03-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">课堂笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机网络</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="课堂笔记（计网）（一）"><a href="#课堂笔记（计网）（一）" class="headerlink" title="课堂笔记（计网）（一）"></a>课堂笔记（计网）（一）</h1><h3 id="分组交换网络中的延迟"><a href="#分组交换网络中的延迟" class="headerlink" title="分组交换网络中的延迟"></a>分组交换网络中的延迟</h3><img src="/2020/03/04/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E8%AE%A1%E7%BD%91%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/1.png" class="" title="a pic">
-
+<h3 id="关系数据库DBMS的特点"><a href="#关系数据库DBMS的特点" class="headerlink" title="关系数据库DBMS的特点"></a>关系数据库DBMS的特点</h3><blockquote>
+<p>数据结构简单、操作灵活、支持关系集合运算</p>
+</blockquote>
+<h3 id="对象关系DBMS的特点"><a href="#对象关系DBMS的特点" class="headerlink" title="对象关系DBMS的特点"></a>对象关系DBMS的特点</h3><blockquote>
+<p>除具备关系数据库的特点以外还有面向对象的特点，例如继承、封装、以及对于复杂数据结构的管理</p>
+</blockquote>
+<p>DBMS需要有多个版本以保证各不同平台上的兼容性。</p>
+<p>Mysql不是企业级数据库，属于<strong>商业级</strong>数据库，处理能力、安全性、可靠性无法达到企业级的水平。</p>
+<p>PostgreSQL数据库主要对象没有存储过程。</p>
+<p>PostgreSQL采用客户服务器架构。</p>
+<h3 id="关系模型"><a href="#关系模型" class="headerlink" title="关系模型"></a>关系模型</h3><h4 id="关系特征"><a href="#关系特征" class="headerlink" title="关系特征"></a>关系特征</h4><ol>
+<li>表中每行存储实体的一个示例数据</li>
+<li>表中每列包含实体的一项属性数据</li>
+<li>表中单元格只能存储单个值</li>
+<li>不允许有重复的行</li>
+<li>不允许有重复的列</li>
+<li>列顺序可任意</li>
+<li>行顺序可任意</li>
+</ol>
+<h4 id="关系的数学定义"><a href="#关系的数学定义" class="headerlink" title="关系的数学定义"></a>关系的数学定义</h4><p>​    定义：关系是指集合域D1、D2·······上运算笛卡尔积的有意义的子集。</p>
+<p>​    <strong>键</strong> 可以唯一标识元组属性的属性列。</p>
+<p>​    <strong>复合键</strong> 元组中多列组合在一起作为键。</p>
+<p>​    <strong>主键</strong> 唯一标识元组，与关联表的外键建立联系，建立表之间的联系、数据库运用主键值组    织关系表的数据储存、快速索引。</p>
+<p>​    <strong>代理键</strong> 增减一个列，采用DBMS自动生成的序号作为主键。</p>
+<h4 id="关系表的定义语句"><a href="#关系表的定义语句" class="headerlink" title="关系表的定义语句"></a>关系表的定义语句</h4><p><code>RELATION_NAME(Colunm1 主键属性,Colunm2,........)</code></p>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>表中确定了一个键之后，其他均为非键。</p>
+<h4 id="关系模型的组成"><a href="#关系模型的组成" class="headerlink" title="关系模型的组成"></a>关系模型的组成</h4><blockquote>
+<p>数据结构、数据操作、数据关系约束(列取值类型，取值范围，取值是否唯一，是否允许空值，关联表参照完整性约束)</p>
+</blockquote>
+<h4 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h4><blockquote>
+<p>集合运算操作：选择、投影、连接、交、并、差</p>
+<p>针对元组的操作：插入、修改、删除</p>
+</blockquote>
+<h4 id="关系模型的完整性"><a href="#关系模型的完整性" class="headerlink" title="关系模型的完整性"></a>关系模型的完整性</h4><h5 id="完整性约束的作用"><a href="#完整性约束的作用" class="headerlink" title="完整性约束的作用"></a>完整性约束的作用</h5><ol>
+<li>消除关系表的元组重复储存</li>
+<li>保持关联表的数据一致性</li>
+<li>实现业务数据规则</li>
+</ol>
+<h5 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h5><pre><code>1. 实体完整性约束
+2. 参照完整性约束
+3. 用户自定义完整性约束</code></pre><h5 id="实体完整性约束"><a href="#实体完整性约束" class="headerlink" title="实体完整性约束"></a>实体完整性约束</h5><p>指在关系表中实体的主键取值约束以保证关系表中的每个元组可被唯一标识</p>
+<p><em>规则</em></p>
 <ol>
-<li><p><strong>dproc</strong>  = 节点处理时延－nodal processing delay</p>
-<p>典型几个微秒或更小</p>
-</li>
-<li><p><strong>dqueue</strong> = 排队时延－queuing delay</p>
-<p>取决于路由器的拥塞程度</p>
-</li>
-<li><p><strong>dtrans</strong> = 传输时延－transmission delay</p>
-<p>= L/R, 低带宽链路比较显著</p>
-</li>
-<li><p><strong>dprop</strong> = 传播时延－propagation delay</p>
-<p>几个微妙到数百毫秒（卫星通信高传播延迟）</p>
-</li>
+<li>主键属性列都不允许为空</li>
+<li>主键取值唯一，并区分关系表中的每个元组</li>
 </ol>
-<h3 id="吞吐量"><a href="#吞吐量" class="headerlink" title="吞吐量"></a>吞吐量</h3><p>单位时间内整个网络传输数据的速率或分组数。</p>
-<ol>
-<li><p>瞬时吞吐量(某一瞬间)</p>
-</li>
-<li><p>平均吞吐量(一段时间内)</p>
-</li>
-</ol>
-<h3 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h3><p>​    p49 20、21题</p>
-<h3 id="协议层次及其服务模型"><a href="#协议层次及其服务模型" class="headerlink" title="协议层次及其服务模型"></a>协议层次及其服务模型</h3><h5 id="分层的弊端"><a href="#分层的弊端" class="headerlink" title="分层的弊端"></a>分层的弊端</h5><blockquote>
-<p>执行效率低     </p>
-</blockquote>
-<h5 id="TCP-IP参考模型"><a href="#TCP-IP参考模型" class="headerlink" title="TCP/IP参考模型"></a>TCP/IP参考模型</h5><blockquote>
-<table>
-<thead>
-<tr>
-<th align="center">TCP/IP参考模型</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">应用层</td>
-</tr>
-<tr>
-<td align="center">传输层</td>
-</tr>
-<tr>
-<td align="center">网络层</td>
-</tr>
-<tr>
-<td align="center">数据链路层</td>
-</tr>
-<tr>
-<td align="center">物理层</td>
-</tr>
-</tbody></table>
-</blockquote>
-<h5 id="协议分层与数据"><a href="#协议分层与数据" class="headerlink" title="协议分层与数据"></a>协议分层与数据</h5><blockquote>
-<p>各层发方从上层到下层，收方从下层到上层传递数据</p>
-<blockquote>
-<p>发方添加头部信息创建新的数据单元，收方去掉头部</p>
-<p>传递新的数据单元到下层/上层</p>
-<p>各层传送不同的协议数据单元PDU</p>
-</blockquote>
-</blockquote>
-<h2 id="课外作业"><a href="#课外作业" class="headerlink" title="课外作业"></a>课外作业</h2><blockquote>
-<p>wireshark软件的使用入门</p>
-<p>课后习题 复习题11，18，19 习题 5、6、7、10、11、31、33</p>
-</blockquote>
-<h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><blockquote>
-<p>核心网络部分没有只有3层，传输层与应用层只在端系统上实现。</p>
-</blockquote>
-<h3 id="网络应用程序体系结构"><a href="#网络应用程序体系结构" class="headerlink" title="网络应用程序体系结构"></a>网络应用程序体系结构</h3><blockquote>
-<p>C/S体系结构</p>
-<p>P2P体系结构</p>
-<p>C/S和P2P混合的体系结构</p>
-</blockquote>
-<h3 id="进程通讯"><a href="#进程通讯" class="headerlink" title="进程通讯"></a>进程通讯</h3><p>​    套接字<code>socket</code>是进程与计算机网络的接口</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/03/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="常浩楷">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kailand">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/03/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-03T20:31:06+08:00">
-                2020-03-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/test/" itemprop="url" rel="index">
-                    <span itemprop="name">test</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+<h5 id="参照完整性约束"><a href="#参照完整性约束" class="headerlink" title="参照完整性约束"></a>参照完整性约束</h5><p>指在关系表中需要遵守的数据约束，以保证关系之间关联数据一致性</p>
+<p><em>规则</em></p>
+<p>​    若关系R中的外键F与关系S中的主键相关联，则R中外键F值必须与S中主键K值一致。</p>
+<p><em>外键</em></p>
+<p>​    在关联的两个关系中，他们具有一个或多个相同属性。若关联列在第一个关系中为主键，则在第二个关系中为外键</p>
+<h5 id="用户自定义完整性约束"><a href="#用户自定义完整性约束" class="headerlink" title="用户自定义完整性约束"></a>用户自定义完整性约束</h5><p>指用户根据具体业务对数据处理规则要求所定义的数据约束</p>
+<p><em>用户可定义的完整性约束</em></p>
+<pre><code>1. 定义列的数据类型和范围
+2. 定义列的缺省值
+3. 是否允许空值
+4. 定义列取值唯一性
+5. 定义列之间的数据依赖性</code></pre>
           
         
       
@@ -818,7 +2216,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -864,7 +2262,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -875,7 +2273,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -886,7 +2284,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
