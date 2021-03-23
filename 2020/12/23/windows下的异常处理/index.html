@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="windows," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="基本概念在应用程序执行过程中发生不常见事件。由CPU引发的叫做硬件异常。如：访问一个无效地址。由操作系统或应用程序引发的称作软件异常。 当有异常或中断发生时，windows会查找IDT(Interrupt Descriptor Table)来寻找处理函数。 IDTIDT是一张位于物理内存中的线性表，共有256项，每项32位下每个长度8字节，64位下长度64字节。位置和长度由CPU中的IDTR（共有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windows下的异常处理">
+<meta property="og:url" content="http://yoursite.com/2020/12/23/windows%E4%B8%8B%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/index.html">
+<meta property="og:site_name" content="Kailand">
+<meta property="og:description" content="基本概念在应用程序执行过程中发生不常见事件。由CPU引发的叫做硬件异常。如：访问一个无效地址。由操作系统或应用程序引发的称作软件异常。 当有异常或中断发生时，windows会查找IDT(Interrupt Descriptor Table)来寻找处理函数。 IDTIDT是一张位于物理内存中的线性表，共有256项，每项32位下每个长度8字节，64位下长度64字节。位置和长度由CPU中的IDTR（共有">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-23T08:49:29.000Z">
+<meta property="article:modified_time" content="2020-12-24T02:52:48.390Z">
+<meta property="article:author" content="常浩楷">
+<meta property="article:tag" content="windows">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/12/23/windows下的异常处理/"/>
+
+
+
+
+
+  <title>windows下的异常处理 | Kailand</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Kailand</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/23/windows%E4%B8%8B%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="常浩楷">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kailand">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">windows下的异常处理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-23T16:49:29+08:00">
+                2020-12-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/windows/" itemprop="url" rel="index">
+                    <span itemprop="name">windows</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/windows/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">异常处理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p>在应用程序执行过程中发生不常见事件。由CPU引发的叫做硬件异常。如：访问一个无效地址。由操作系统或应用程序引发的称作软件异常。</p>
+<p>当有异常或中断发生时，windows会查找IDT(Interrupt Descriptor Table)来寻找处理函数。</p>
+<h2 id="IDT"><a href="#IDT" class="headerlink" title="IDT"></a>IDT</h2><p>IDT是一张位于物理内存中的线性表，共有256项，每项32位下每个长度8字节，64位下长度64字节。位置和长度由CPU中的IDTR（共有48位高32位是表的基址，低16位位表的长度，可以使用SIDT与LIDT来读写）寄存器决定</p>
+<p>IDT的每一项为一个门结构，分为三类任务门（CPU任务切换）、中断门（中断处理程序入口）、陷阱门（异常处理入口）。</p>
+<p>当有一个中断或异常发生时，CPU会根据终端号查找IDT，从而找到其处理程序入口地址。</p>
+<h2 id="准备活动"><a href="#准备活动" class="headerlink" title="准备活动"></a>准备活动</h2><p>异常处理函数通常会对异常信息进行封装，以便进行后续信息，一般会封装为两个结构体一部分为<code>EXCEPTION_RECORD</code>用于记录异常相关的信息，另一部分使用<code>KTRAP_FRAME</code>进行封装，记录了异常发生时CPU各寄存器的完整镜像，但这是一个内核态下的概念要在用户态中使用将会被封装为<code>CONTEXT</code>即上下文结构体。</p>
+<p>包装完毕后，异常处理函数还会进一步调用系统内核的<code>nt!KiDispatchException</code>函数来处理异常，会根据错误发生时的系统状态不同而进行不同的处理。</p>
+<h2 id="内核态错误的处理过程"><a href="#内核态错误的处理过程" class="headerlink" title="内核态错误的处理过程"></a>内核态错误的处理过程</h2><ol>
+<li>检查是否存在内核调试器，若存在系统把异常处理的权力交给内核调试器，并注明是第一次处理机会，交给内核调试器后会根据用用户的设置来确定是否需要处理该异常，若无法判断则中断，或正确处理则返回发生异常的位置继续执行。若不存在则跳过。</li>
+<li>若不存在内核调试器或在内核调试器中选择不进行处理，则会调用<code>nt!RtlDisapatchException</code>由线程所定义的SEH结构体进行处理。</li>
+<li>若此时仍未处理，则调试器会对其进行第二次处理。</li>
+<li>若此时仍然不处理，系统则认为无法再继续运行下去了，为了避免引起更严重的错误，系统此时将调用<code>KeBugCheckEx</code>产生一个<code>KERNEL_MODE_EXCEPTION_NOT_HANDLED</code>的蓝屏错误。</li>
+</ol>
+<h2 id="用户态错误的处理过程"><a href="#用户态错误的处理过程" class="headerlink" title="用户态错误的处理过程"></a>用户态错误的处理过程</h2><ol>
+<li>首先检查内核调试器是否存在，若存在则将控制权交给内核调试器，给予第一次异常处理机会。</li>
+<li>若不存在或不处理该错误，则会在栈上放置<code>EXCEPTION_RECORD</code>与<code>CONTEXT</code>两个结构，并返回用户态的<code>KiUserExceptionDispatcher</code>函数，由他调用<code>ntdll!RtlDispatchException</code>函数进行用户态的异常处理，此时涉及<code>SEH</code>与<code>VEH</code>两种异常处理机制，若此时调试存在则会跳过<code>SEH</code>部分的顶级异常处理，进入下一阶段的处理。否则进入顶级异常处理阶段，进行终结处理，如果没有调试器或者调试器还是处理不了异常，则系统就会调用ExitProcess函数。</li>
+<li>若不能处理则给予调试器第二次处理的机会，若还不处理就会将异常传送给异常处理端口进行处理，该端口由子系统进程<code>csrss.exe</code>监听，通常会弹出一对话框，选择结束程序或者将其附加至调试器上，若没有调试器或无法处理异常，则调用<code>ExitProcess</code>函数结束。</li>
+<li>在终结程序时，会再次调用线程中的所有异常处理过程，这是最后的机会，否则将会被清理。</li>
+</ol>
+<h1 id="SEH"><a href="#SEH" class="headerlink" title="SEH"></a>SEH</h1><p>SEH支持内核态与用户态的异常处理，VEH仅支持用户态下的异常处理。使用了给程序提供一执行前预先设定的回调函数的思想。</p>
+<p><code>TEB</code>头部的<code>TIB</code>的偏移0处存放着指向<code>EXCEPTION_REGISTRATION_RECORD</code>结构的指针<code>ExceptionList</code>，32位下<code>fs:[0]</code>将指向TEB。其每个项的结构如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">EXCEPTION_REGISTRATION_RECORD</span>&#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> _<span class="title">EXCEPTION_REGISTRATION_RECORD</span> *<span class="title">Next</span>;</span><span class="comment">//指向下一结构体</span></span><br><span class="line">    PEXCEPTION_ROUTINE Handler;<span class="comment">//当前异常处理回调函数的地址</span></span><br><span class="line">&#125;EXCEPTION_REGISTRATION_RECORD;</span><br></pre></td></tr></table></figure>
+
+<p>每个线程的异常处理链表属进程的私有数据，SEH的作用范围仅限当前进程。</p>
+<p>由于在内核态和用户态使用了两个栈空间，需要使用一结构体传递信息，<code>_EXCEPTION_POINTERS</code>结构将指向<code>CONTEXT</code>与<code>EXCEPTION_RECORD</code>的地址，并被放置到栈中。</p>
+<p>新创建的SEH将被插入异常处理链表的头部。他的作用范围与安装它的函数相同，SEH是基于栈帧的异常处理机制。使用如下代码进行异常处理函数的安装。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">assume fs:nothing;MASM需要</span><br><span class="line">push offset SEHandler;放入异常回调函数的地址</span><br><span class="line">push fs:[0];放入原链表头部</span><br><span class="line">mov fs:[0],esp;将新的链表头部复制给TEB</span><br></pre></td></tr></table></figure>
+
+<p>SEH的卸载过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov esp,dword ptr fs:[0]</span><br><span class="line">pop dword ptr fs:[0]</span><br></pre></td></tr></table></figure>
+
+<h1 id="异常处理程序原理及设计"><a href="#异常处理程序原理及设计" class="headerlink" title="异常处理程序原理及设计"></a>异常处理程序原理及设计</h1><h2 id="异常分发"><a href="#异常分发" class="headerlink" title="异常分发"></a>异常分发</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/windows/" rel="tag"># windows</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/17/%E9%80%86%E5%90%91%E2%80%94C-%E5%9F%BA%E7%A1%80/" rel="next" title="逆向—C++基础">
+                <i class="fa fa-chevron-left"></i> 逆向—C++基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/03/18/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" rel="prev" title="Java学习笔记（一）">
+                Java学习笔记（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="常浩楷" />
+          <p class="site-author-name" itemprop="name">常浩楷</p>
+           
+              <p class="site-description motion-element" itemprop="description">personal blog</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IDT"><span class="nav-number">1.1.</span> <span class="nav-text">IDT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备活动"><span class="nav-number">1.2.</span> <span class="nav-text">准备活动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内核态错误的处理过程"><span class="nav-number">1.3.</span> <span class="nav-text">内核态错误的处理过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户态错误的处理过程"><span class="nav-number">1.4.</span> <span class="nav-text">用户态错误的处理过程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SEH"><span class="nav-number">2.</span> <span class="nav-text">SEH</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#异常处理程序原理及设计"><span class="nav-number">3.</span> <span class="nav-text">异常处理程序原理及设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#异常分发"><span class="nav-number">3.1.</span> <span class="nav-text">异常分发</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">常浩楷</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

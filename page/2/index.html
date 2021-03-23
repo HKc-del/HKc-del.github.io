@@ -273,6 +273,532 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/09/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%85%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="常浩楷">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kailand">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/09/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%85%AD/" itemprop="url">JavaScript读书笔记-六</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-09T20:04:15+08:00">
+                2020-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JavaScript中的面向对象-一"><a href="#JavaScript中的面向对象-一" class="headerlink" title="JavaScript中的面向对象(一)"></a>JavaScript中的面向对象(一)</h1><h2 id="数据属性"><a href="#数据属性" class="headerlink" title="数据属性"></a>数据属性</h2><p>数据属性包含一个数据的值，并且具有四个描述行为的特性。</p>
+<p><code>Configurable</code>: 表示是否能够通过delete删除属性并重新进行定义或修改为访问器属性，默认值为<code>true</code></p>
+<p><code>Enumberable</code>: 表示是否能通过<code>for-in</code>循环返回属性。</p>
+<p><code>Writable</code>: 表示是否能修改该数据属性的值，默认为true</p>
+<p><code>Value</code>: 这个属性的数据值，默认值为<code>undefined</code></p>
+<p>可以通过<code>Object.defineProperty()</code>这个api进行定义，例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(person,<span class="string">"name"</span>,&#123;</span><br><span class="line">    configurable:<span class="literal">false</span>,</span><br><span class="line">    value: <span class="string">"Kailand"</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">alert(person.name);<span class="comment">//Kailand</span></span><br><span class="line"><span class="keyword">delete</span> person.name;</span><br><span class="line">alert(person.name);<span class="comment">//Kailand</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="访问器属性"><a href="#访问器属性" class="headerlink" title="访问器属性"></a>访问器属性</h2><p>包含一对getter和setter函数，读取时会调用getter函数，赋值时会调用setter函数，访问器属性由以下四个特性。</p>
+<p><code>Configurable</code>: 该访问器属性是否可以删除以及重新定义。</p>
+<p><code>Enumberable</code>: 是否可以通过<code>for-in</code>循环遍历属性。</p>
+<p><code>Get</code>: Getter函数，默认为<code>undefined</code></p>
+<p><code>Set</code>: Setter函数，默认为<code>undefined</code></p>
+<p>也可以通过<code>Object.defineProperty()</code>这个api进行定义，例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> book = &#123;</span><br><span class="line">    _year: <span class="number">2004</span>,</span><br><span class="line">    edtion: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(book,<span class="string">"year"</span>,&#123;</span><br><span class="line">    <span class="keyword">get</span>: function()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>._year;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">set</span>: function(newValue)&#123;</span><br><span class="line">        <span class="keyword">if</span>(newValue &gt; <span class="number">2004</span>)&#123;</span><br><span class="line">            <span class="keyword">this</span>._year = newValue;</span><br><span class="line">            <span class="keyword">this</span>.edtion += newValue - <span class="number">2004</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">book.year = <span class="number">2005</span>;</span><br><span class="line">alert(book.edtion);<span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以通过两个非标准api进行定义，例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> book = &#123;</span><br><span class="line">    _year: <span class="number">2004</span>,</span><br><span class="line">    edtion: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">book.__defineGetter__(<span class="string">"year"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._year;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">book.__defineSetter__(<span class="string">"year"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">newValue</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(newValue &gt; <span class="number">2004</span>)&#123;</span><br><span class="line">        <span class="keyword">this</span>._year = newValue;</span><br><span class="line">        <span class="keyword">this</span>.edtion += newValue - <span class="number">2004</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">book.year = <span class="number">2005</span>;</span><br><span class="line">alert(book.edtion);</span><br></pre></td></tr></table></figure>
+
+<p>可以通过<code>Object.defineProperties()</code>方法进行多个属性的定义。</p>
+<p>可以使用<code>Object.getOwnPropertyDescriptor()</code>方法获取一个属性的描述。</p>
+<h2 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h2><ol>
+<li>工厂模式</li>
+<li>构造函数模式</li>
+</ol>
+<p>构造函数及可以当作构造函数配合<code>new</code>操作符来使用，也可以当作正常的函数直接调用。例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//当作构造函数使用</span></span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">"Kailand"</span>,<span class="number">20</span>);</span><br><span class="line">person1.sayName();</span><br><span class="line"></span><br><span class="line"><span class="comment">//当作正常函数进行使用</span></span><br><span class="line">Person(<span class="string">"Kai"</span>,<span class="number">21</span>);</span><br><span class="line"><span class="built_in">window</span>.sayName();</span><br></pre></td></tr></table></figure>
+
+<h2 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h2><p>每个函数实际上都存在一个prototype属性，是一个指针，指向一个对象，而这个对象是所有特定类型的实例所共享的属性和方法。</p>
+<img src="/2020/09/09/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%85%AD/1.png" class="" title="a pic">
+
+<p>原型与实例、构造函数之间的引用关系如上图所示。</p>
+<p>可以使用<code>isPrototypeOf()</code>方法来确定对象之间是否存在这种关系，如果<code>prototype</code>指向调用该方法的对象则这个方法返回<code>true</code>，例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(Person.prototype.isPrototypeOf(person1));<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<p>可以使用<code>Object.getPrototypeOf</code>方法来获得对象的原型。例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.getPrototypeOf(person1)==Person.prototype<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<p>在实例中可以拥有与原型中相同名称的属性名，在属性搜索之时会优先搜索实例中属性再进行原型中属性的搜索。</p>
+<p><code>hasOwnProperty()</code>方法可以用来判断实例中是否存在某一属性，只有查询的属性名存在于实例之中时才会返回<code>true</code>。</p>
+<p>直接在实例上调用<code>Object.getOwnPropertyDescriptor()</code>方法只能获取实例属性的描述符，如果要获取原型上的描述符则需要直接再原型对象上调用该方法。</p>
+<p><code>in</code>关键能够在属性能够被访问时返回<code>true</code>不论这个属性是位于原型中还是实例中。<code>for-in</code>循环将返回所有可以被对象访问且可枚举的属性，包括存在于原型中的属性。<strong>根据规定所有开发人员所定义的属性都是可以被枚举的。在原型中屏蔽了枚举属性的而在实例属性中没有被屏蔽的实例属性也会在<code>for-in</code>的循环中出现</strong>例如下。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> o = &#123;</span><br><span class="line">    toString:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"this is a test"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> prop <span class="keyword">in</span> o)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(prop);</span><br><span class="line">&#125;<span class="comment">//显示出了toString</span></span><br></pre></td></tr></table></figure>
+
+<p>可以使用<code>Object.keys()</code>方法显示所有在一个对象之中可以被枚举的属性名的字符串的数组。</p>
+<h3 id="更简单的使用原型模型"><a href="#更简单的使用原型模型" class="headerlink" title="更简单的使用原型模型"></a>更简单的使用原型模型</h3><p>原型模式可以使用以下更简单的语法进行定义。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    name: <span class="string">"Kailand"</span>,</span><br><span class="line">    age: <span class="number">20</span>,</span><br><span class="line">    job: <span class="string">"Software Engineer"</span>,</span><br><span class="line">    sayName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是上述操作会引起prototype对象的完全重写，会导致以下的影响。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> friend = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line">friend <span class="keyword">instanceof</span> <span class="built_in">Object</span><span class="comment">//true</span></span><br><span class="line">friend <span class="keyword">instanceof</span> Person<span class="comment">//true</span></span><br><span class="line">firend.constructor == Person <span class="comment">//false</span></span><br><span class="line">friend.constructor == <span class="built_in">Object</span> <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<p>可以使用以下方式解决</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    <span class="keyword">constructor</span>: Person,</span><br><span class="line">    name: "Kailand",</span><br><span class="line">   	age: 20,</span><br><span class="line">    job: "Software Engineer",</span><br><span class="line">    sayName: function()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是仍然可能导致一个问题的发生，由于所有用户定义的属性均为可枚举的，此时原本在prototype中不可枚举的constructor属性变为可枚举的，可以借助<code>Object.defineProperty()</code>方法进行改进。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/08/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%BA%94/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="常浩楷">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kailand">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/08/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%BA%94/" itemprop="url">JavaScript读书笔记-五</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-08T19:07:15+08:00">
+                2020-09-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="RegExp类型补充与其他"><a href="#RegExp类型补充与其他" class="headerlink" title="RegExp类型补充与其他"></a>RegExp类型补充与其他</h1><h2 id="1-RegExp类型"><a href="#1-RegExp类型" class="headerlink" title="1.RegExp类型"></a>1.RegExp类型</h2><p>定义式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> expression = <span class="regexp">/ pattern /</span> flags;</span><br></pre></td></tr></table></figure>
+
+<p><strong>pattern</strong>部分为任意的正则表达式，<strong>flags</strong>为标志（<code>g</code>全局模式,<code>i</code>不区分大小写,<code>m</code>多行匹配）</p>
+<h3 id="实例属性"><a href="#实例属性" class="headerlink" title="实例属性"></a>实例属性</h3><p><code>global</code> 是否设置了<code>g</code> flag</p>
+<p><code>ignoreCase</code> 是否设置了<code>i</code> flag</p>
+<p><code>lastIndex</code>  表示开始搜索下一个匹配字符位置</p>
+<p><code>multiline</code> 表示是否设置了<code>m</code>flag</p>
+<p> <code>source</code> 正则表达式字符串</p>
+<h3 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h3><p><code>exec()</code>方法接受一个参数，即要被匹配的字符串。</p>
+<p>返回的对象：</p>
+<p><code>index</code> 匹配的下标、<code>lastIndex</code>为下一次匹配开始的下标。</p>
+<p>本身为一数组第一项包含着整个匹配的字符串，往后的下表存放着分别捕获的分组。</p>
+<p><code>test()</code>方法接受一个被测试的字符串，返回一个布尔值，判断是否存在匹配。</p>
+<h3 id="构造函数属性"><a href="#构造函数属性" class="headerlink" title="构造函数属性"></a>构造函数属性</h3><p><code>input</code> 最近一次要匹配的字符串</p>
+<p><code>lastMatch</code>最近一次的匹配项</p>
+<p><code>lastParen</code>最后一次匹配的捕获组</p>
+<p><code>leftContext</code>  <code>lastMatch</code>之前的文本</p>
+<p><code>multiline</code> 布尔值，表示是否使用了多行模式</p>
+<p><code>rightContext</code>  <code>lastMatch</code>之后的字符串</p>
+<h2 id="2-Function类型"><a href="#2-Function类型" class="headerlink" title="2.Function类型"></a>2.Function类型</h2><p>函数本质上为一对象。<strong>JavaScript中无法进行函数重载</strong>。<strong>JavaScript解释器会优先解析函数声明，使其在语句中变得可用，而函数表达式的解释推迟到函数执行时进行。（函数声明提升）但是变量的声明过程并不会提升，所以下面的代码段会执行失败。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alert(sum(<span class="number">10</span>,<span class="number">10</span>));</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num1,num2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1+num2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数作为对象也可作为函数的返回值。</p>
+<h3 id="arguments和this属性"><a href="#arguments和this属性" class="headerlink" title="arguments和this属性"></a>arguments和this属性</h3><p><code>arguments</code>包含着传入参数构成的数组，存在一个<code>callee</code>属性为一指针，指向这个函数。</p>
+<p><code>this</code>对象（环境对象）</p>
+<p><code>caller</code>属性调用该函数的对象名</p>
+<h3 id="apply与call方法"><a href="#apply与call方法" class="headerlink" title="apply与call方法"></a>apply与call方法</h3><p><code>apply()</code>接受两个函数参数，第一个为函数要调用的环境对象，第二个为参数数组(可以用arguments对象)，可以使用特定的环境对象调用函数。</p>
+<p><strong>严格模式之下，未指定环境变量对函数的调用不会被指定默认环境对象window，而为undefined</strong>。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/06/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%9B%9B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="常浩楷">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kailand">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/06/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%9B%9B/" itemprop="url">JavaScript读书笔记-四</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-06T20:48:53+08:00">
+                2020-07-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="面向对象程序设计"><a href="#面向对象程序设计" class="headerlink" title="面向对象程序设计"></a>面向对象程序设计</h1><p>由于在ECMAScript中并没有类的定义，所以在JavaScript中的对于的对象的定义与其他语言有所有不同，ECMA-262把对象定义为无序属性的集合，其属性可以包含基本值，对象和函数，即可以把ECMAScript中的对象想象成为散列表，是一组键值对的集合，其中有的值可以为函数。</p>
+<h2 id="属性类型"><a href="#属性类型" class="headerlink" title="属性类型"></a>属性类型</h2><h3 id="数据属性"><a href="#数据属性" class="headerlink" title="数据属性"></a>数据属性</h3><p><code>Configurable</code>:表示能否使用<code>delete</code>删除属性，修改属性的特性，把属性修改为访问器属性，默认为<code>true</code></p>
+<p><code>Enumerable</code>: 表示是否能够通过<code>for-in</code>返回属性，默认为<code>true</code>。</p>
+<p><code>Writable</code>: 表示是否能修改属性的值，默认为<code>true</code></p>
+<p><code>Value</code>: 这个属性的值，默认为<code>undefined</code></p>
+<p>可以通过<code>Object.defineProperty()</code>这个api进行设置。例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(person,<span class="string">"name"</span>,&#123;</span><br><span class="line">    	writable: <span class="literal">false</span>,</span><br><span class="line">    	value:<span class="string">"Kailand"</span></span><br><span class="line">	&#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">alert(person.name);<span class="comment">//Kailand</span></span><br><span class="line">person.name = <span class="string">"Kai"</span>;</span><br><span class="line">alert(person.name);<span class="comment">//Kailand</span></span><br></pre></td></tr></table></figure>
+
+<p>其他值也均可使用该api进行定义。</p>
+<h3 id="访问器属性"><a href="#访问器属性" class="headerlink" title="访问器属性"></a>访问器属性</h3><p>访问器属性不包含数据值，只包含一对getter和setter函数，有如下几个特性</p>
+<p><code>Configurable</code>: 能否通过delete删除属性</p>
+<p><code>Enumberable</code>: 能否通过<code>for-in</code>循环返回属性</p>
+<p><code>Get</code>: 读取时调用的函数</p>
+<p><code>Set</code>: 写入时调用的函数</p>
+<p>还是可以通过上述的api进行定义，例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> book = &#123;</span><br><span class="line">    _year: <span class="number">2004</span>,</span><br><span class="line">    edtion: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(book,<span class="string">"year"</span>,&#123;</span><br><span class="line">    <span class="keyword">get</span>: function()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>._year;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">set</span>: function(newValue)&#123;</span><br><span class="line">        <span class="keyword">if</span>(newValue &gt; <span class="number">2004</span>)&#123;</span><br><span class="line">            <span class="keyword">this</span>._year = newValue;</span><br><span class="line">            <span class="keyword">this</span>.edition += newValue - <span class="number">2004</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">book.year = <span class="number">2005</span>;</span><br><span class="line">alert(book.edtion);</span><br></pre></td></tr></table></figure>
+
+
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/06/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%B8%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1644,574 +2170,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/09/C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="常浩楷">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kailand">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/09/C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%A4%9A%E7%BA%BF%E7%A8%8B/" itemprop="url">C语言中的多线程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-09T16:16:14+08:00">
-                2020-03-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index">
-                    <span itemprop="name">C语言</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C%E8%AF%AD%E8%A8%80/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" itemprop="url" rel="index">
-                    <span itemprop="name">多线程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="C语言中的多线程"><a href="#C语言中的多线程" class="headerlink" title="C语言中的多线程"></a>C语言中的多线程</h1><p>在linux下进行编程需要使用头文件pthread.h，在编译时同时要加上<code>-lpthread</code>选项，使gcc在编译时连接到这些库的二进制代码。</p>
-<h3 id="创建线程-pthread-create函数"><a href="#创建线程-pthread-create函数" class="headerlink" title="创建线程 pthread_create函数"></a>创建线程 pthread_create函数</h3><p><code>pthread_create(&amp;thrd1,NULL,(void*)&amp;thread_fuction,(void*)&amp;some_argument)</code> </p>
-<p>线程创建函数主要需要4个参数，第一个为线程变量名，即被创建的线程变量的地址，第二个参数为线成的属性指针，缺省值为NULL，第三个参数被创建的程序代码，即该线程所要执行的函数的函数指针，第四个参数为上述函数在执行时所需要的参数。</p>
-<h3 id="结束线程-pthread-exit函数"><a href="#结束线程-pthread-exit函数" class="headerlink" title="结束线程 pthread_exit函数"></a>结束线程 pthread_exit函数</h3><p><code>pthread_exit(void *retval);</code></p>
-<p>retval变量用于存放线程结束的退出状态。</p>
-<h3 id="线程等待函数pthread-join函数"><a href="#线程等待函数pthread-join函数" class="headerlink" title="线程等待函数pthread_join函数"></a>线程等待函数pthread_join函数</h3><p><code>pthread_join (thrd1,NULL);</code></p>
-<p>在运用<code>pthread_create</code>成功创建多个线程后用户并不知道哪个线程会先被执行。我们需要运用<code>pthread_join</code>函数来等待某个线程的结束。</p>
-<h3 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h3><p>一个关于线程同时访问统一数据时所会遇到的问题。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">trd1</span><span class="params">(<span class="keyword">void</span> *p)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;<span class="number">1000</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"now n is %d--thrd1\n"</span>,n);</span><br><span class="line">		n+=<span class="number">1</span>;</span><br><span class="line">		sleep(<span class="number">0.1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">trd2</span><span class="params">(<span class="keyword">void</span> *p)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;<span class="number">1000</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"now n is %d --thrd2\n"</span>,n);</span><br><span class="line">		n = <span class="number">0</span>;</span><br><span class="line">		sleep(<span class="number">0.13</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">pthread_t</span> thrd1,thrd2;</span><br><span class="line">	<span class="keyword">int</span> temp1,temp2;</span><br><span class="line">	pthread_create(&amp;thrd1,<span class="literal">NULL</span>,trd1,<span class="literal">NULL</span>);</span><br><span class="line">	pthread_create(&amp;thrd2,<span class="literal">NULL</span>,trd2,<span class="literal">NULL</span>);</span><br><span class="line">	</span><br><span class="line">	temp2 = pthread_join(thrd2,<span class="literal">NULL</span>);</span><br><span class="line">	temp1 = pthread_join(thrd1,<span class="literal">NULL</span>);</span><br><span class="line">	<span class="keyword">if</span>(temp1==<span class="number">0</span>)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"线程1已成功结束"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(temp2==<span class="number">0</span>)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"线程2已成功结束"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"The n is %d at the end \n"</span>,n);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/09/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="常浩楷">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kailand">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/09/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/" itemprop="url">课堂笔记（操作系统）（一）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-09T16:15:56+08:00">
-                2020-03-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">课堂笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
-                    <span itemprop="name">操作系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="课堂笔记（操作系统）（一）"><a href="#课堂笔记（操作系统）（一）" class="headerlink" title="课堂笔记（操作系统）（一）"></a>课堂笔记（操作系统）（一）</h1><h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><h4 id="调度器"><a href="#调度器" class="headerlink" title="调度器"></a>调度器</h4><p>常驻内存，不是一个进程，但是可以被执行。</p>
-<p>就绪状态的任务才能有资格被执行。</p>
-<h4 id="进程的特征"><a href="#进程的特征" class="headerlink" title="进程的特征"></a>进程的特征</h4><ol>
-<li>动态性  <em>由”创建而产生，由调度而执行，有撤消而消亡“</em></li>
-<li>并发性  _多个进程实体同存于内存之中，且能在一段时间内同时运行_。</li>
-<li>独立性  <em>进程实体是一个能独立运行</em></li>
-<li>异步性  <em>指进程按各自独立的、不可预知的速度向前推进，或说进程实体按异步方式运行</em></li>
-</ol>
-<h4 id="进程的三种状态"><a href="#进程的三种状态" class="headerlink" title="进程的三种状态"></a>进程的三种状态</h4><ol>
-<li><p>就绪状态  <em>万事俱备，只差CPU</em></p>
-</li>
-<li><p>执行状态  <em>正在执行</em></p>
-</li>
-<li><p>阻塞状态  _当前正在执行的进程由于某事件而暂时无法继续执行时，便进入暂停状态，即阻塞状态_。</p>
-<img src="/2020/03/09/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/1.png" class="" title="a pic">
-
-<blockquote>
-<p>往往根据阻塞原因，系统中会设置多个阻塞队列，当不同的阻塞原因解除时，方便调度不同的进程执行。</p>
-<p><strong>时间片到达而被抢占CPU任务从执行状态变为就绪状态</strong></p>
-<p><strong>sleep休眠，那么将从运行态变为阻塞态(等待态)</strong></p>
-<p>等待态与阻塞态为一种状态</p>
-<p><strong>如果执行状态的进程被中断，那么将会到就绪态</strong></p>
-<p>进程状态只能同时处于一种状态</p>
-</blockquote>
-</li>
-</ol>
-<h4 id="进程的创建与终值"><a href="#进程的创建与终值" class="headerlink" title="进程的创建与终值"></a>进程的创建与终值</h4><ol>
-<li><p>创建状态 <em>资源无法得到满足</em></p>
-</li>
-<li><p>终止状态  </p>
-</li>
-<li><p>挂起状态  <em>对任何状态的进程都可以挂起</em></p>
-<blockquote>
-<p>引入挂起状态的原因：</p>
-<ol>
-<li>终端用户的请求</li>
-<li>父进程的请求</li>
-<li>负荷调节的需要，把一些不重要的进程挂起</li>
-<li>操作系统的需求</li>
-</ol>
-</blockquote>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/06/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="常浩楷">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kailand">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/06/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%89%EF%BC%88%E4%B8%80%EF%BC%89/" itemprop="url">课堂笔记（数据库）（一）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-06T22:02:51+08:00">
-                2020-03-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">课堂笔记</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="课堂笔记（数据库）（一）"><a href="#课堂笔记（数据库）（一）" class="headerlink" title="课堂笔记（数据库）（一）"></a>课堂笔记（数据库）（一）</h1><h3 id="桌面级DBMS与企业级DBMS系统比较"><a href="#桌面级DBMS与企业级DBMS系统比较" class="headerlink" title="桌面级DBMS与企业级DBMS系统比较"></a>桌面级DBMS与企业级DBMS系统比较</h3><ol>
-<li>桌面级DBMS功能简单、软件体量小、处理能力弱、通常只支持单一语言的应用程序开发。例：<strong>Access</strong></li>
-<li>企业级DBMS功能完善、软件体量大、处理能力强、支持多种不同语言的应用开发.例：<strong>Oracle DB</strong></li>
-</ol>
-<h3 id="关系数据库DBMS的特点"><a href="#关系数据库DBMS的特点" class="headerlink" title="关系数据库DBMS的特点"></a>关系数据库DBMS的特点</h3><blockquote>
-<p>数据结构简单、操作灵活、支持关系集合运算</p>
-</blockquote>
-<h3 id="对象关系DBMS的特点"><a href="#对象关系DBMS的特点" class="headerlink" title="对象关系DBMS的特点"></a>对象关系DBMS的特点</h3><blockquote>
-<p>除具备关系数据库的特点以外还有面向对象的特点，例如继承、封装、以及对于复杂数据结构的管理</p>
-</blockquote>
-<p>DBMS需要有多个版本以保证各不同平台上的兼容性。</p>
-<p>Mysql不是企业级数据库，属于<strong>商业级</strong>数据库，处理能力、安全性、可靠性无法达到企业级的水平。</p>
-<p>PostgreSQL数据库主要对象没有存储过程。</p>
-<p>PostgreSQL采用客户服务器架构。</p>
-<h3 id="关系模型"><a href="#关系模型" class="headerlink" title="关系模型"></a>关系模型</h3><h4 id="关系特征"><a href="#关系特征" class="headerlink" title="关系特征"></a>关系特征</h4><ol>
-<li>表中每行存储实体的一个示例数据</li>
-<li>表中每列包含实体的一项属性数据</li>
-<li>表中单元格只能存储单个值</li>
-<li>不允许有重复的行</li>
-<li>不允许有重复的列</li>
-<li>列顺序可任意</li>
-<li>行顺序可任意</li>
-</ol>
-<h4 id="关系的数学定义"><a href="#关系的数学定义" class="headerlink" title="关系的数学定义"></a>关系的数学定义</h4><p>​    定义：关系是指集合域D1、D2·······上运算笛卡尔积的有意义的子集。</p>
-<p>​    <strong>键</strong> 可以唯一标识元组属性的属性列。</p>
-<p>​    <strong>复合键</strong> 元组中多列组合在一起作为键。</p>
-<p>​    <strong>主键</strong> 唯一标识元组，与关联表的外键建立联系，建立表之间的联系、数据库运用主键值组    织关系表的数据储存、快速索引。</p>
-<p>​    <strong>代理键</strong> 增减一个列，采用DBMS自动生成的序号作为主键。</p>
-<h4 id="关系表的定义语句"><a href="#关系表的定义语句" class="headerlink" title="关系表的定义语句"></a>关系表的定义语句</h4><p><code>RELATION_NAME(Colunm1 主键属性,Colunm2,........)</code></p>
-<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>表中确定了一个键之后，其他均为非键。</p>
-<h4 id="关系模型的组成"><a href="#关系模型的组成" class="headerlink" title="关系模型的组成"></a>关系模型的组成</h4><blockquote>
-<p>数据结构、数据操作、数据关系约束(列取值类型，取值范围，取值是否唯一，是否允许空值，关联表参照完整性约束)</p>
-</blockquote>
-<h4 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h4><blockquote>
-<p>集合运算操作：选择、投影、连接、交、并、差</p>
-<p>针对元组的操作：插入、修改、删除</p>
-</blockquote>
-<h4 id="关系模型的完整性"><a href="#关系模型的完整性" class="headerlink" title="关系模型的完整性"></a>关系模型的完整性</h4><h5 id="完整性约束的作用"><a href="#完整性约束的作用" class="headerlink" title="完整性约束的作用"></a>完整性约束的作用</h5><ol>
-<li>消除关系表的元组重复储存</li>
-<li>保持关联表的数据一致性</li>
-<li>实现业务数据规则</li>
-</ol>
-<h5 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h5><pre><code>1. 实体完整性约束
-2. 参照完整性约束
-3. 用户自定义完整性约束</code></pre><h5 id="实体完整性约束"><a href="#实体完整性约束" class="headerlink" title="实体完整性约束"></a>实体完整性约束</h5><p>指在关系表中实体的主键取值约束以保证关系表中的每个元组可被唯一标识</p>
-<p><em>规则</em></p>
-<ol>
-<li>主键属性列都不允许为空</li>
-<li>主键取值唯一，并区分关系表中的每个元组</li>
-</ol>
-<h5 id="参照完整性约束"><a href="#参照完整性约束" class="headerlink" title="参照完整性约束"></a>参照完整性约束</h5><p>指在关系表中需要遵守的数据约束，以保证关系之间关联数据一致性</p>
-<p><em>规则</em></p>
-<p>​    若关系R中的外键F与关系S中的主键相关联，则R中外键F值必须与S中主键K值一致。</p>
-<p><em>外键</em></p>
-<p>​    在关联的两个关系中，他们具有一个或多个相同属性。若关联列在第一个关系中为主键，则在第二个关系中为外键</p>
-<h5 id="用户自定义完整性约束"><a href="#用户自定义完整性约束" class="headerlink" title="用户自定义完整性约束"></a>用户自定义完整性约束</h5><p>指用户根据具体业务对数据处理规则要求所定义的数据约束</p>
-<p><em>用户可定义的完整性约束</em></p>
-<pre><code>1. 定义列的数据类型和范围
-2. 定义列的缺省值
-3. 是否允许空值
-4. 定义列取值唯一性
-5. 定义列之间的数据依赖性</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2262,7 +2220,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -2273,7 +2231,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -2284,7 +2242,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -2326,7 +2284,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

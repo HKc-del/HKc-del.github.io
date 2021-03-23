@@ -273,6 +273,538 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/18/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="常浩楷">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kailand">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/03/18/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" itemprop="url">Java学习笔记（一）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-18T15:43:48+08:00">
+                2021-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="springcloud学习笔记（一）"><a href="#springcloud学习笔记（一）" class="headerlink" title="springcloud学习笔记（一）"></a>springcloud学习笔记（一）</h1><p>微服务的四个核心问题：</p>
+<ol>
+<li>服务多，如何访问</li>
+<li>服务之间如何通信</li>
+<li>服务如何治理</li>
+<li>服务挂掉怎么办？</li>
+</ol>
+<h2 id="常用的springcloud-生态"><a href="#常用的springcloud-生态" class="headerlink" title="常用的springcloud 生态"></a>常用的springcloud 生态</h2><ol>
+<li><p>spring cloud Netflix</p>
+<p>一站式解决方案</p>
+<p>使用API网关，zuul组件</p>
+<p>Feign–HTTP通信方式</p>
+<p>服务注册与发现：Eureka</p>
+<p>熔断机制：Hystrix</p>
+<p>。。。。。。停止维护</p>
+</li>
+<li><p>Apache Dubbo Zookeeper</p>
+<p>半自动，需要整合</p>
+<p>没有API网关，第三方组件或者自行实现</p>
+<p>Dubbo RPC通信框架</p>
+<p>Zookeeper服务注册与发现</p>
+<p>借助其他熔断机制</p>
+</li>
+<li><p>Spring Cloud Alibaba</p>
+<p>最新一站式解决方案！更简单</p>
+</li>
+</ol>
+<h2 id="springcloud项目创建方式"><a href="#springcloud项目创建方式" class="headerlink" title="springcloud项目创建方式"></a>springcloud项目创建方式</h2><h3 id="总工程"><a href="#总工程" class="headerlink" title="总工程"></a>总工程</h3><p>在IDEA中新建maven项目，删除src文件夹，并修改pom之中的内容</p>
+<p>修改打包方式为pom</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">packaging</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>添加依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2020.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">type</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>import<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--springboot 启动器--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>再在其中添加Module，创建各个服务。</p>
+<h2 id="Eureka"><a href="#Eureka" class="headerlink" title="Eureka"></a>Eureka</h2><h3 id="Eureka架构"><a href="#Eureka架构" class="headerlink" title="Eureka架构"></a>Eureka架构</h3><p>Eureka使用CS架构设计，Eureka作为服务注册功能的服务器，是服务注册中心</p>
+<p>使用Eureka客户端的连接到EurekaServer的服务器。</p>
+<p>三大角色：</p>
+<pre><code>1.    Eureka Server提供服务的注册与发现
+ 2.    ServiceProvider提供服务注册到EurekaServer之中
+ 3.    ServiceConsumer服务消费方从EurekaServer之中获取服务注册服务列表，从而找到服务。</code></pre><h3 id="EurekaServer配置"><a href="#EurekaServer配置" class="headerlink" title="EurekaServer配置"></a>EurekaServer配置</h3><p>在<code>application.yml</code>之中添加以下的选项</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line">	<span class="attr">instance:</span> </span><br><span class="line">		<span class="attr">hostname:</span> <span class="string">localhost</span> <span class="comment">#Eureka的实例名称</span></span><br><span class="line">	<span class="attr">client:</span></span><br><span class="line">		<span class="attr">register-with-eureka:</span> <span class="literal">false</span> <span class="comment">#是否向注册中心注册</span></span><br><span class="line">		<span class="attr">fetch-registy:</span> <span class="literal">false</span> <span class="comment">#如果为false表示自己为注册中心</span></span><br><span class="line">		<span class="attr">service-url:</span></span><br><span class="line">			<span class="attr">defaultZone:</span> <span class="string">http://$&#123;eureka.instance.hostname&#125;:$&#123;server.port&#125;/eureka/</span> <span class="comment">#和服务中心的交互地址</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">	<span class="attr">port:</span> <span class="number">8761</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="服务熔断与服务降级"><a href="#服务熔断与服务降级" class="headerlink" title="服务熔断与服务降级"></a>服务熔断与服务降级</h2><h3 id="服务熔断"><a href="#服务熔断" class="headerlink" title="服务熔断"></a>服务熔断</h3><p>某个服务异常引起超时或者异常，则会引起熔断，直到服务</p>
+<h3 id="服务降级"><a href="#服务降级" class="headerlink" title="服务降级"></a>服务降级</h3><p>位于客户端，从整体的网站负载考虑，当某个服务被关闭后，服务将不会再被调用，此时可以在客户端准备一个失败回调，此时返回一个默认值，缺省值或者失败提示。</p>
+<p>整体服务水平下降，但是能用。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/23/windows%E4%B8%8B%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="常浩楷">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kailand">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/12/23/windows%E4%B8%8B%E7%9A%84%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" itemprop="url">windows下的异常处理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-23T16:49:29+08:00">
+                2020-12-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/windows/" itemprop="url" rel="index">
+                    <span itemprop="name">windows</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/windows/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">异常处理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p>在应用程序执行过程中发生不常见事件。由CPU引发的叫做硬件异常。如：访问一个无效地址。由操作系统或应用程序引发的称作软件异常。</p>
+<p>当有异常或中断发生时，windows会查找IDT(Interrupt Descriptor Table)来寻找处理函数。</p>
+<h2 id="IDT"><a href="#IDT" class="headerlink" title="IDT"></a>IDT</h2><p>IDT是一张位于物理内存中的线性表，共有256项，每项32位下每个长度8字节，64位下长度64字节。位置和长度由CPU中的IDTR（共有48位高32位是表的基址，低16位位表的长度，可以使用SIDT与LIDT来读写）寄存器决定</p>
+<p>IDT的每一项为一个门结构，分为三类任务门（CPU任务切换）、中断门（中断处理程序入口）、陷阱门（异常处理入口）。</p>
+<p>当有一个中断或异常发生时，CPU会根据终端号查找IDT，从而找到其处理程序入口地址。</p>
+<h2 id="准备活动"><a href="#准备活动" class="headerlink" title="准备活动"></a>准备活动</h2><p>异常处理函数通常会对异常信息进行封装，以便进行后续信息，一般会封装为两个结构体一部分为<code>EXCEPTION_RECORD</code>用于记录异常相关的信息，另一部分使用<code>KTRAP_FRAME</code>进行封装，记录了异常发生时CPU各寄存器的完整镜像，但这是一个内核态下的概念要在用户态中使用将会被封装为<code>CONTEXT</code>即上下文结构体。</p>
+<p>包装完毕后，异常处理函数还会进一步调用系统内核的<code>nt!KiDispatchException</code>函数来处理异常，会根据错误发生时的系统状态不同而进行不同的处理。</p>
+<h2 id="内核态错误的处理过程"><a href="#内核态错误的处理过程" class="headerlink" title="内核态错误的处理过程"></a>内核态错误的处理过程</h2><ol>
+<li>检查是否存在内核调试器，若存在系统把异常处理的权力交给内核调试器，并注明是第一次处理机会，交给内核调试器后会根据用用户的设置来确定是否需要处理该异常，若无法判断则中断，或正确处理则返回发生异常的位置继续执行。若不存在则跳过。</li>
+<li>若不存在内核调试器或在内核调试器中选择不进行处理，则会调用<code>nt!RtlDisapatchException</code>由线程所定义的SEH结构体进行处理。</li>
+<li>若此时仍未处理，则调试器会对其进行第二次处理。</li>
+<li>若此时仍然不处理，系统则认为无法再继续运行下去了，为了避免引起更严重的错误，系统此时将调用<code>KeBugCheckEx</code>产生一个<code>KERNEL_MODE_EXCEPTION_NOT_HANDLED</code>的蓝屏错误。</li>
+</ol>
+<h2 id="用户态错误的处理过程"><a href="#用户态错误的处理过程" class="headerlink" title="用户态错误的处理过程"></a>用户态错误的处理过程</h2><ol>
+<li>首先检查内核调试器是否存在，若存在则将控制权交给内核调试器，给予第一次异常处理机会。</li>
+<li>若不存在或不处理该错误，则会在栈上放置<code>EXCEPTION_RECORD</code>与<code>CONTEXT</code>两个结构，并返回用户态的<code>KiUserExceptionDispatcher</code>函数，由他调用<code>ntdll!RtlDispatchException</code>函数进行用户态的异常处理，此时涉及<code>SEH</code>与<code>VEH</code>两种异常处理机制，若此时调试存在则会跳过<code>SEH</code>部分的顶级异常处理，进入下一阶段的处理。否则进入顶级异常处理阶段，进行终结处理，如果没有调试器或者调试器还是处理不了异常，则系统就会调用ExitProcess函数。</li>
+<li>若不能处理则给予调试器第二次处理的机会，若还不处理就会将异常传送给异常处理端口进行处理，该端口由子系统进程<code>csrss.exe</code>监听，通常会弹出一对话框，选择结束程序或者将其附加至调试器上，若没有调试器或无法处理异常，则调用<code>ExitProcess</code>函数结束。</li>
+<li>在终结程序时，会再次调用线程中的所有异常处理过程，这是最后的机会，否则将会被清理。</li>
+</ol>
+<h1 id="SEH"><a href="#SEH" class="headerlink" title="SEH"></a>SEH</h1><p>SEH支持内核态与用户态的异常处理，VEH仅支持用户态下的异常处理。使用了给程序提供一执行前预先设定的回调函数的思想。</p>
+<p><code>TEB</code>头部的<code>TIB</code>的偏移0处存放着指向<code>EXCEPTION_REGISTRATION_RECORD</code>结构的指针<code>ExceptionList</code>，32位下<code>fs:[0]</code>将指向TEB。其每个项的结构如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">EXCEPTION_REGISTRATION_RECORD</span>&#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> _<span class="title">EXCEPTION_REGISTRATION_RECORD</span> *<span class="title">Next</span>;</span><span class="comment">//指向下一结构体</span></span><br><span class="line">    PEXCEPTION_ROUTINE Handler;<span class="comment">//当前异常处理回调函数的地址</span></span><br><span class="line">&#125;EXCEPTION_REGISTRATION_RECORD;</span><br></pre></td></tr></table></figure>
+
+<p>每个线程的异常处理链表属进程的私有数据，SEH的作用范围仅限当前进程。</p>
+<p>由于在内核态和用户态使用了两个栈空间，需要使用一结构体传递信息，<code>_EXCEPTION_POINTERS</code>结构将指向<code>CONTEXT</code>与<code>EXCEPTION_RECORD</code>的地址，并被放置到栈中。</p>
+<p>新创建的SEH将被插入异常处理链表的头部。他的作用范围与安装它的函数相同，SEH是基于栈帧的异常处理机制。使用如下代码进行异常处理函数的安装。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">assume fs:nothing;MASM需要</span><br><span class="line">push offset SEHandler;放入异常回调函数的地址</span><br><span class="line">push fs:[0];放入原链表头部</span><br><span class="line">mov fs:[0],esp;将新的链表头部复制给TEB</span><br></pre></td></tr></table></figure>
+
+<p>SEH的卸载过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov esp,dword ptr fs:[0]</span><br><span class="line">pop dword ptr fs:[0]</span><br></pre></td></tr></table></figure>
+
+<h1 id="异常处理程序原理及设计"><a href="#异常处理程序原理及设计" class="headerlink" title="异常处理程序原理及设计"></a>异常处理程序原理及设计</h1><h2 id="异常分发"><a href="#异常分发" class="headerlink" title="异常分发"></a>异常分发</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/17/%E9%80%86%E5%90%91%E2%80%94C-%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="常浩楷">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kailand">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/17/%E9%80%86%E5%90%91%E2%80%94C-%E5%9F%BA%E7%A1%80/" itemprop="url">逆向—C++基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-17T19:01:13+08:00">
+                2020-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/RE/" itemprop="url" rel="index">
+                    <span itemprop="name">RE</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/RE/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="指针与引用"><a href="#指针与引用" class="headerlink" title="指针与引用"></a>指针与引用</h2><h3 id="引用类型-左值引用"><a href="#引用类型-左值引用" class="headerlink" title="引用类型(左值引用)"></a>引用类型(左值引用)</h3><p>引用是为对象起了另一个名字，通过<code>&amp;d</code>的声明方式进行，其中<code>d</code>是声明变量的名字，<strong>引用变量必须被初始化</strong>。完成声明后，引用类型将与原变量一直绑定在一起，无法重新绑定到另一个变量。<strong>引用本身不是一个对象，不能引用引用类型。</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ival = <span class="number">1024</span>;</span><br><span class="line"><span class="keyword">int</span> &amp;refVal = ival;</span><br><span class="line"><span class="keyword">int</span> &amp;refVal2;<span class="comment">//错误：必须被初始化</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="复合类型的声明"><a href="#复合类型的声明" class="headerlink" title="复合类型的声明"></a>复合类型的声明</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">1024</span>, *p = &amp;i, &amp;r = i;</span><br><span class="line"><span class="comment">//i是一个int型的数，p是一个指针型，r是一个int型引用</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="指向指针的引用"><a href="#指向指针的引用" class="headerlink" title="指向指针的引用"></a>指向指针的引用</h3><p>理解变量类型的方法是从右到左阅读变量的定义，离变量最近的符号对变量的类型有最直接的影响。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">int</span> *p;</span><br><span class="line"><span class="keyword">int</span> *&amp;r = p;<span class="comment">//对一个指针p的引用</span></span><br><span class="line"></span><br><span class="line">r = &amp;i;</span><br><span class="line">*r = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="const对象"><a href="#const对象" class="headerlink" title="const对象"></a><code>const</code>对象</h3><p>利用<code>const</code>关键字声明的变量，仅在本文件中可用。</p>
+<h3 id="constexpr对象"><a href="#constexpr对象" class="headerlink" title="constexpr对象"></a><code>constexpr</code>对象</h3><p>C++11中使用，允许将变量声明为<code>constrexpr</code>，来由编译器来验证变量的值是否是一个常量表达式。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/25/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%8D%81%E4%B8%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1486,532 +2018,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/09/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%85%AD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="常浩楷">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kailand">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/09/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%85%AD/" itemprop="url">JavaScript读书笔记-六</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-09T20:04:15+08:00">
-                2020-09-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="JavaScript中的面向对象-一"><a href="#JavaScript中的面向对象-一" class="headerlink" title="JavaScript中的面向对象(一)"></a>JavaScript中的面向对象(一)</h1><h2 id="数据属性"><a href="#数据属性" class="headerlink" title="数据属性"></a>数据属性</h2><p>数据属性包含一个数据的值，并且具有四个描述行为的特性。</p>
-<p><code>Configurable</code>: 表示是否能够通过delete删除属性并重新进行定义或修改为访问器属性，默认值为<code>true</code></p>
-<p><code>Enumberable</code>: 表示是否能通过<code>for-in</code>循环返回属性。</p>
-<p><code>Writable</code>: 表示是否能修改该数据属性的值，默认为true</p>
-<p><code>Value</code>: 这个属性的数据值，默认值为<code>undefined</code></p>
-<p>可以通过<code>Object.defineProperty()</code>这个api进行定义，例：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(person,<span class="string">"name"</span>,&#123;</span><br><span class="line">    configurable:<span class="literal">false</span>,</span><br><span class="line">    value: <span class="string">"Kailand"</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">alert(person.name);<span class="comment">//Kailand</span></span><br><span class="line"><span class="keyword">delete</span> person.name;</span><br><span class="line">alert(person.name);<span class="comment">//Kailand</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="访问器属性"><a href="#访问器属性" class="headerlink" title="访问器属性"></a>访问器属性</h2><p>包含一对getter和setter函数，读取时会调用getter函数，赋值时会调用setter函数，访问器属性由以下四个特性。</p>
-<p><code>Configurable</code>: 该访问器属性是否可以删除以及重新定义。</p>
-<p><code>Enumberable</code>: 是否可以通过<code>for-in</code>循环遍历属性。</p>
-<p><code>Get</code>: Getter函数，默认为<code>undefined</code></p>
-<p><code>Set</code>: Setter函数，默认为<code>undefined</code></p>
-<p>也可以通过<code>Object.defineProperty()</code>这个api进行定义，例：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> book = &#123;</span><br><span class="line">    _year: <span class="number">2004</span>,</span><br><span class="line">    edtion: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(book,<span class="string">"year"</span>,&#123;</span><br><span class="line">    <span class="keyword">get</span>: function()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>._year;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">set</span>: function(newValue)&#123;</span><br><span class="line">        <span class="keyword">if</span>(newValue &gt; <span class="number">2004</span>)&#123;</span><br><span class="line">            <span class="keyword">this</span>._year = newValue;</span><br><span class="line">            <span class="keyword">this</span>.edtion += newValue - <span class="number">2004</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">book.year = <span class="number">2005</span>;</span><br><span class="line">alert(book.edtion);<span class="comment">//2</span></span><br></pre></td></tr></table></figure>
-
-<p>也可以通过两个非标准api进行定义，例：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> book = &#123;</span><br><span class="line">    _year: <span class="number">2004</span>,</span><br><span class="line">    edtion: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">book.__defineGetter__(<span class="string">"year"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._year;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">book.__defineSetter__(<span class="string">"year"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">newValue</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(newValue &gt; <span class="number">2004</span>)&#123;</span><br><span class="line">        <span class="keyword">this</span>._year = newValue;</span><br><span class="line">        <span class="keyword">this</span>.edtion += newValue - <span class="number">2004</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">book.year = <span class="number">2005</span>;</span><br><span class="line">alert(book.edtion);</span><br></pre></td></tr></table></figure>
-
-<p>可以通过<code>Object.defineProperties()</code>方法进行多个属性的定义。</p>
-<p>可以使用<code>Object.getOwnPropertyDescriptor()</code>方法获取一个属性的描述。</p>
-<h2 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h2><ol>
-<li>工厂模式</li>
-<li>构造函数模式</li>
-</ol>
-<p>构造函数及可以当作构造函数配合<code>new</code>操作符来使用，也可以当作正常的函数直接调用。例</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//当作构造函数使用</span></span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">"Kailand"</span>,<span class="number">20</span>);</span><br><span class="line">person1.sayName();</span><br><span class="line"></span><br><span class="line"><span class="comment">//当作正常函数进行使用</span></span><br><span class="line">Person(<span class="string">"Kai"</span>,<span class="number">21</span>);</span><br><span class="line"><span class="built_in">window</span>.sayName();</span><br></pre></td></tr></table></figure>
-
-<h2 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h2><p>每个函数实际上都存在一个prototype属性，是一个指针，指向一个对象，而这个对象是所有特定类型的实例所共享的属性和方法。</p>
-<img src="/2020/09/09/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%85%AD/1.png" class="" title="a pic">
-
-<p>原型与实例、构造函数之间的引用关系如上图所示。</p>
-<p>可以使用<code>isPrototypeOf()</code>方法来确定对象之间是否存在这种关系，如果<code>prototype</code>指向调用该方法的对象则这个方法返回<code>true</code>，例：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(Person.prototype.isPrototypeOf(person1));<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-
-<p>可以使用<code>Object.getPrototypeOf</code>方法来获得对象的原型。例：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.getPrototypeOf(person1)==Person.prototype<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-
-<p>在实例中可以拥有与原型中相同名称的属性名，在属性搜索之时会优先搜索实例中属性再进行原型中属性的搜索。</p>
-<p><code>hasOwnProperty()</code>方法可以用来判断实例中是否存在某一属性，只有查询的属性名存在于实例之中时才会返回<code>true</code>。</p>
-<p>直接在实例上调用<code>Object.getOwnPropertyDescriptor()</code>方法只能获取实例属性的描述符，如果要获取原型上的描述符则需要直接再原型对象上调用该方法。</p>
-<p><code>in</code>关键能够在属性能够被访问时返回<code>true</code>不论这个属性是位于原型中还是实例中。<code>for-in</code>循环将返回所有可以被对象访问且可枚举的属性，包括存在于原型中的属性。<strong>根据规定所有开发人员所定义的属性都是可以被枚举的。在原型中屏蔽了枚举属性的而在实例属性中没有被屏蔽的实例属性也会在<code>for-in</code>的循环中出现</strong>例如下。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> o = &#123;</span><br><span class="line">    toString:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"this is a test"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> prop <span class="keyword">in</span> o)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(prop);</span><br><span class="line">&#125;<span class="comment">//显示出了toString</span></span><br></pre></td></tr></table></figure>
-
-<p>可以使用<code>Object.keys()</code>方法显示所有在一个对象之中可以被枚举的属性名的字符串的数组。</p>
-<h3 id="更简单的使用原型模型"><a href="#更简单的使用原型模型" class="headerlink" title="更简单的使用原型模型"></a>更简单的使用原型模型</h3><p>原型模式可以使用以下更简单的语法进行定义。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    name: <span class="string">"Kailand"</span>,</span><br><span class="line">    age: <span class="number">20</span>,</span><br><span class="line">    job: <span class="string">"Software Engineer"</span>,</span><br><span class="line">    sayName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>但是上述操作会引起prototype对象的完全重写，会导致以下的影响。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> friend = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line">friend <span class="keyword">instanceof</span> <span class="built_in">Object</span><span class="comment">//true</span></span><br><span class="line">friend <span class="keyword">instanceof</span> Person<span class="comment">//true</span></span><br><span class="line">firend.constructor == Person <span class="comment">//false</span></span><br><span class="line">friend.constructor == <span class="built_in">Object</span> <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-
-<p>可以使用以下方式解决</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    <span class="keyword">constructor</span>: Person,</span><br><span class="line">    name: "Kailand",</span><br><span class="line">   	age: 20,</span><br><span class="line">    job: "Software Engineer",</span><br><span class="line">    sayName: function()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>但是仍然可能导致一个问题的发生，由于所有用户定义的属性均为可枚举的，此时原本在prototype中不可枚举的constructor属性变为可枚举的，可以借助<code>Object.defineProperty()</code>方法进行改进。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/08/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%BA%94/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="常浩楷">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kailand">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/08/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%BA%94/" itemprop="url">JavaScript读书笔记-五</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-08T19:07:15+08:00">
-                2020-09-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="RegExp类型补充与其他"><a href="#RegExp类型补充与其他" class="headerlink" title="RegExp类型补充与其他"></a>RegExp类型补充与其他</h1><h2 id="1-RegExp类型"><a href="#1-RegExp类型" class="headerlink" title="1.RegExp类型"></a>1.RegExp类型</h2><p>定义式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> expression = <span class="regexp">/ pattern /</span> flags;</span><br></pre></td></tr></table></figure>
-
-<p><strong>pattern</strong>部分为任意的正则表达式，<strong>flags</strong>为标志（<code>g</code>全局模式,<code>i</code>不区分大小写,<code>m</code>多行匹配）</p>
-<h3 id="实例属性"><a href="#实例属性" class="headerlink" title="实例属性"></a>实例属性</h3><p><code>global</code> 是否设置了<code>g</code> flag</p>
-<p><code>ignoreCase</code> 是否设置了<code>i</code> flag</p>
-<p><code>lastIndex</code>  表示开始搜索下一个匹配字符位置</p>
-<p><code>multiline</code> 表示是否设置了<code>m</code>flag</p>
-<p> <code>source</code> 正则表达式字符串</p>
-<h3 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h3><p><code>exec()</code>方法接受一个参数，即要被匹配的字符串。</p>
-<p>返回的对象：</p>
-<p><code>index</code> 匹配的下标、<code>lastIndex</code>为下一次匹配开始的下标。</p>
-<p>本身为一数组第一项包含着整个匹配的字符串，往后的下表存放着分别捕获的分组。</p>
-<p><code>test()</code>方法接受一个被测试的字符串，返回一个布尔值，判断是否存在匹配。</p>
-<h3 id="构造函数属性"><a href="#构造函数属性" class="headerlink" title="构造函数属性"></a>构造函数属性</h3><p><code>input</code> 最近一次要匹配的字符串</p>
-<p><code>lastMatch</code>最近一次的匹配项</p>
-<p><code>lastParen</code>最后一次匹配的捕获组</p>
-<p><code>leftContext</code>  <code>lastMatch</code>之前的文本</p>
-<p><code>multiline</code> 布尔值，表示是否使用了多行模式</p>
-<p><code>rightContext</code>  <code>lastMatch</code>之后的字符串</p>
-<h2 id="2-Function类型"><a href="#2-Function类型" class="headerlink" title="2.Function类型"></a>2.Function类型</h2><p>函数本质上为一对象。<strong>JavaScript中无法进行函数重载</strong>。<strong>JavaScript解释器会优先解析函数声明，使其在语句中变得可用，而函数表达式的解释推迟到函数执行时进行。（函数声明提升）但是变量的声明过程并不会提升，所以下面的代码段会执行失败。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alert(sum(<span class="number">10</span>,<span class="number">10</span>));</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num1,num2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1+num2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>函数作为对象也可作为函数的返回值。</p>
-<h3 id="arguments和this属性"><a href="#arguments和this属性" class="headerlink" title="arguments和this属性"></a>arguments和this属性</h3><p><code>arguments</code>包含着传入参数构成的数组，存在一个<code>callee</code>属性为一指针，指向这个函数。</p>
-<p><code>this</code>对象（环境对象）</p>
-<p><code>caller</code>属性调用该函数的对象名</p>
-<h3 id="apply与call方法"><a href="#apply与call方法" class="headerlink" title="apply与call方法"></a>apply与call方法</h3><p><code>apply()</code>接受两个函数参数，第一个为函数要调用的环境对象，第二个为参数数组(可以用arguments对象)，可以使用特定的环境对象调用函数。</p>
-<p><strong>严格模式之下，未指定环境变量对函数的调用不会被指定默认环境对象window，而为undefined</strong>。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/06/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%9B%9B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="常浩楷">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kailand">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/06/JavaScript%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E5%9B%9B/" itemprop="url">JavaScript读书笔记-四</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-06T20:48:53+08:00">
-                2020-07-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="面向对象程序设计"><a href="#面向对象程序设计" class="headerlink" title="面向对象程序设计"></a>面向对象程序设计</h1><p>由于在ECMAScript中并没有类的定义，所以在JavaScript中的对于的对象的定义与其他语言有所有不同，ECMA-262把对象定义为无序属性的集合，其属性可以包含基本值，对象和函数，即可以把ECMAScript中的对象想象成为散列表，是一组键值对的集合，其中有的值可以为函数。</p>
-<h2 id="属性类型"><a href="#属性类型" class="headerlink" title="属性类型"></a>属性类型</h2><h3 id="数据属性"><a href="#数据属性" class="headerlink" title="数据属性"></a>数据属性</h3><p><code>Configurable</code>:表示能否使用<code>delete</code>删除属性，修改属性的特性，把属性修改为访问器属性，默认为<code>true</code></p>
-<p><code>Enumerable</code>: 表示是否能够通过<code>for-in</code>返回属性，默认为<code>true</code>。</p>
-<p><code>Writable</code>: 表示是否能修改属性的值，默认为<code>true</code></p>
-<p><code>Value</code>: 这个属性的值，默认为<code>undefined</code></p>
-<p>可以通过<code>Object.defineProperty()</code>这个api进行设置。例：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(person,<span class="string">"name"</span>,&#123;</span><br><span class="line">    	writable: <span class="literal">false</span>,</span><br><span class="line">    	value:<span class="string">"Kailand"</span></span><br><span class="line">	&#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">alert(person.name);<span class="comment">//Kailand</span></span><br><span class="line">person.name = <span class="string">"Kai"</span>;</span><br><span class="line">alert(person.name);<span class="comment">//Kailand</span></span><br></pre></td></tr></table></figure>
-
-<p>其他值也均可使用该api进行定义。</p>
-<h3 id="访问器属性"><a href="#访问器属性" class="headerlink" title="访问器属性"></a>访问器属性</h3><p>访问器属性不包含数据值，只包含一对getter和setter函数，有如下几个特性</p>
-<p><code>Configurable</code>: 能否通过delete删除属性</p>
-<p><code>Enumberable</code>: 能否通过<code>for-in</code>循环返回属性</p>
-<p><code>Get</code>: 读取时调用的函数</p>
-<p><code>Set</code>: 写入时调用的函数</p>
-<p>还是可以通过上述的api进行定义，例：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> book = &#123;</span><br><span class="line">    _year: <span class="number">2004</span>,</span><br><span class="line">    edtion: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(book,<span class="string">"year"</span>,&#123;</span><br><span class="line">    <span class="keyword">get</span>: function()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>._year;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">set</span>: function(newValue)&#123;</span><br><span class="line">        <span class="keyword">if</span>(newValue &gt; <span class="number">2004</span>)&#123;</span><br><span class="line">            <span class="keyword">this</span>._year = newValue;</span><br><span class="line">            <span class="keyword">this</span>.edition += newValue - <span class="number">2004</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">book.year = <span class="number">2005</span>;</span><br><span class="line">alert(book.edtion);</span><br></pre></td></tr></table></figure>
-
-
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2062,7 +2068,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -2073,7 +2079,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -2084,7 +2090,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -2126,7 +2132,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
