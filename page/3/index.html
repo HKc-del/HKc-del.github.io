@@ -273,6 +273,377 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/12/PHP%E4%B8%8EWeb%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="常浩楷">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kailand">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/12/PHP%E4%B8%8EWeb%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" itemprop="url">PHP与Web开发学习笔记（一）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-12T18:01:15+08:00">
+                2020-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP%E4%B8%8EWeb%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP与Web开发学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="PHP与Web开发学习笔记-一"><a href="#PHP与Web开发学习笔记-一" class="headerlink" title="PHP与Web开发学习笔记(一)"></a>PHP与Web开发学习笔记(一)</h1><h3 id="Variable-Handling-Functions"><a href="#Variable-Handling-Functions" class="headerlink" title="Variable Handling Functions"></a>Variable Handling Functions</h3><h4 id="Testing-and-Setting-variable"><a href="#Testing-and-Setting-variable" class="headerlink" title="Testing and Setting variable"></a>Testing and Setting variable</h4><p><code>gettype ()</code> and <code>settype()</code> are the funtions that are used most generally. And the following are their funtion prototypes.</p>
+<p><code>string gettype(mixed var)</code></p>
+<p><code>bool settype(mixed var,string type)</code></p>
+<h5 id="The-Specific-Funtions"><a href="#The-Specific-Funtions" class="headerlink" title="The Specific Funtions"></a>The Specific Funtions</h5><p><code>is_array()</code> <code>is_double</code> <code>is_long</code> <code>is_string</code> <code>is_bool</code> <code>is_obeject</code> `</p>
+<p><code>is_resource()</code>-Checks whether the variable is a resource</p>
+<blockquote>
+<p><strong>What is a resource variable?</strong></p>
+<p>A resource is a special variable, holding a reference to an  external resource. Resources are created and used by special functions.</p>
+<p>E.G.：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$c = mysql_connect();</span><br><span class="line"><span class="keyword">echo</span> get_resource_type($c).<span class="string">"\n"</span>;</span><br><span class="line"><span class="comment">// 打印：mysql link</span></span><br></pre></td></tr></table></figure>
+
+<p>And the $c is resource variable</p>
+</blockquote>
+<p><code>is_null()</code>,<code>is_numberic</code> </p>
+<p> <code>is_scalar()</code>-Checks whether the variable is a scalar-that is an integer,boolean,string or float</p>
+<p><code>is_callable()</code>-Checks whether the variable is the name of a valid function</p>
+<h5 id="Testing-Variable-Status"><a href="#Testing-Variable-Status" class="headerlink" title="Testing Variable Status"></a>Testing Variable Status</h5><p><code>isset(var)</code> Returns true if it exists and false otherwise.</p>
+<p><code>unset(var)</code> This function gets rid of the variable it is passed</p>
+<p> <code>bool empty(var)</code> The function checks to see whether a variable exists and has a a <strong>nonempty</strong>, <strong>nonzero value</strong>. It will generates a blank if it returns false.</p>
+<h5 id="Reinterpreting-Variables"><a href="#Reinterpreting-Variables" class="headerlink" title="Reinterpreting Variables"></a>Reinterpreting Variables</h5><p><code>int intval(var,int base=10)</code>,<code>float floatval(var)</code>,<code>string  strval(var)</code></p>
+<p>The three functions  above will accepts a variable as input and and it will returns the variable’s value converted to the appropriate type.</p>
+<h3 id="Making-Decision-with-Statements"><a href="#Making-Decision-with-Statements" class="headerlink" title="Making Decision with Statements"></a>Making Decision with Statements</h3><p><code>if</code> <code>else</code> <code>elseif</code> and <code>switch</code>  <em>Attention! use the <code>break</code> statement</em></p>
+<h3 id="Repeating-Actions-Through-Iteration"><a href="#Repeating-Actions-Through-Iteration" class="headerlink" title="Repeating Actions Through Iteration"></a>Repeating Actions Through Iteration</h3><p><code>while</code> </p>
+<p><code>for</code></p>
+<p><em><strong>A Demo</strong></em></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>($i=<span class="number">1</span>;$i&lt;=$numnames;$i++)&#123;</span><br><span class="line">    $temp=<span class="string">"name$i"</span>;</span><br><span class="line">    <span class="keyword">echo</span> htmlspecialchars($$temp).<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>foreach</code> loops which is specially designed for arrays.</p>
+<p><code>do...while</code></p>
+<p><code>exit</code> -Finish the script</p>
+<p><code>break</code>,<code>continue</code></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/11/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="常浩楷">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kailand">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/11/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0%EF%BC%88%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%89%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="url">课堂笔记（操作系统）（二）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-11T10:07:46+08:00">
+                2020-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">课堂笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="课堂笔记（操作系统）（二）"><a href="#课堂笔记（操作系统）（二）" class="headerlink" title="课堂笔记（操作系统）（二）"></a>课堂笔记（操作系统）（二）</h1><h3 id="进程管理中的数据结构"><a href="#进程管理中的数据结构" class="headerlink" title="进程管理中的数据结构"></a>进程管理中的数据结构</h3><h4 id="进程控制块"><a href="#进程控制块" class="headerlink" title="进程控制块"></a>进程控制块</h4><p><strong>作用</strong>：</p>
+<ol>
+<li>独立运行基本单位的标志</li>
+<li>能实现间断性运行方式</li>
+<li>提供进程管理所需要的信息</li>
+<li>提供进程调度所需要的信息</li>
+<li>实现与其它进程的同步与通信</li>
+</ol>
+<p><strong>内容</strong>：</p>
+<ol>
+<li><p>进程标识符信息</p>
+<blockquote>
+<p> <strong>进程标识符用于惟一地标识一个进程。一个进程通常有两种标识符</strong></p>
+<ol>
+<li>内部标识符  <em>为每一个进程赋予一个惟一的数字标识符</em></li>
+<li>外部标识符  <em>它由创建者提供(进程的名字)，通常是由字母、数字组成，往往是由用户（进程）在访问该进程时使用</em></li>
+</ol>
+</blockquote>
+</li>
+<li><p>处理器状态信息</p>
+<blockquote>
+<p><strong>处理机状态信息主要是由处理机的各种寄存器中的内容组成的</strong></p>
+</blockquote>
+</li>
+<li><p>进程调度信息</p>
+<blockquote>
+<ol>
+<li>进程状态。指明进程的当前状态</li>
+<li>进程优先级</li>
+<li>进程调度所需的其它信息  <em>进程已等待CPU的时间总和、进程已执行的时间总和等</em></li>
+<li>事件 <em>即 阻塞原因</em>     通过PCB中存储的该进程的阻塞事件，找到该进程所在的阻塞队列</li>
+</ol>
+</blockquote>
+</li>
+<li><p>进程控制信息</p>
+<blockquote>
+<ol>
+<li>程序和数据的地址</li>
+<li>进程同步和通信机制</li>
+<li>资源清单</li>
+<li>链接指针</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<p>实时操作系统中没有进程的概念，调度单位是任务，相当于线程</p>
+<h3 id="作业调度的过程"><a href="#作业调度的过程" class="headerlink" title="作业调度的过程"></a>作业调度的过程</h3><p>将程序装入内存-&gt;创建进程-&gt;进入就绪队列-&gt;被调度-&gt;执行</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/09/C%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1432,7 +1803,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1443,7 +1814,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -1454,7 +1825,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
